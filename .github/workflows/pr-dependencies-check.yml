@@ -1,28 +1,29 @@
 name: PR Dependency Check
 
-on:
-  workflow_call:
-    inputs:
-      pr_number:
-        description: 'PR number or URL'
-        type: string
-        required: true
-      search_depth:
-        description: 'Dependencies search depth'
-        default: '100'
-        type: string
-  workflow_dispatch:
-    inputs:
-      pr_number:
-        description: 'PR number or URL'
-        type: string
-        required: true
-      search_depth:
-        description: 'Dependencies search depth'
-        default: '100'
-        type: choice
-        options: ['100', '200', '500']
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       pr_number:
+#         description: 'PR number or URL'
+#         type: string
+#         required: true
+#       search_depth:
+#         description: 'Dependencies search depth'
+#         default: '100'
+#         type: string
+#   workflow_dispatch:
+#     inputs:
+#       pr_number:
+#         description: 'PR number or URL'
+#         type: string
+#         required: true
+#       search_depth:
+#         description: 'Dependencies search depth'
+#         default: '100'
+#         type: choice
+#         options: ['100', '200', '500']
+# 
 jobs:
   check:
     runs-on: ubuntu-latest

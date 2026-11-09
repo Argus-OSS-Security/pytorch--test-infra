@@ -6,118 +6,119 @@ name: Validate binaries
 #   pytorch/test-infra/.github/workflows/generate_binary_build_matrix.yml@main
 # For an example of the `workflow_call` usage see:
 #   https://github.com/pytorch/builder/pull/1144
-on:
-  workflow_call:
-    inputs:
-      os:
-        description: "Operating system to generate for (linux, windows, macos, macos-arm64)"
-        required: true
-        type: string
-      channel:
-        description: "Channel to use (nightly, test, release, all)"
-        required: true
-        type: string
-      torchonly:
-        description: 'Validate torchonly'
-        default: false
-        required: false
-        type: boolean
-      include-test-ops:
-        description: 'Include Test Ops tests (only Linux)'
-        default: false
-        required: false
-        type: boolean
-      include-torchaudio:
-        description: 'Include torchaudio in validation (by default only torch and torchvision are validated)'
-        default: false
-        required: false
-        type: boolean
-      use-only-dl-pytorch-org:
-        description: 'Use only download.pytorch.org when generating wheel install command'
-        default: "false"
-        required: false
-        type: string
-      use-extra-index-url:
-        description: 'Use extra-index url for pip tests'
-        default: false
-        required: false
-        type: boolean
-      use-wheel-variants:
-        description: 'Use wheel-variants for installing pip binaries'
-        default: false
-        required: false
-        type: boolean
-      test-infra-ref:
-        description: "Ref of pytorch/test-infra to source the validation scripts from"
-        default: "main"
-        required: false
-        type: string
-
-  workflow_dispatch:
-    inputs:
-      os:
-        description: "Operating system to generate for (linux, windows, macos, macos-arm64)"
-        required: true
-        type: choice
-        default: all
-        options:
-          - windows
-          - linux
-          - linux-aarch64
-          - macos
-          - all
-      channel:
-        description: "Channel to use (nightly, test, release, all)"
-        required: true
-        type: choice
-        default: test
-        options:
-          - release
-          - nightly
-          - test
-          - all
-      torchonly:
-        description: 'Validate torchonly'
-        default: false
-        required: false
-        type: boolean
-      version:
-        description: 'Version to validate'
-        default: ""
-        required: false
-        type: string
-      include-test-ops:
-        description: 'Include Test Ops tests (only Linux)'
-        default: false
-        required: false
-        type: boolean
-      include-torchaudio:
-        description: 'Include torchaudio in validation (by default only torch and torchvision are validated)'
-        default: false
-        required: false
-        type: boolean
-      use-only-dl-pytorch-org:
-        description: 'Use only download.pytorch.org when generating wheel install command'
-        default: "false"
-        required: false
-        type: string
-      use-extra-index-url:
-        description: 'Use extra-index url for pip tests'
-        default: false
-        required: false
-        type: boolean
-      use-wheel-variants:
-        description: 'Use wheel-variants for installing pip binaries'
-        default: false
-        required: false
-        type: boolean
-
-      test-infra-ref:
-        description: "Ref of pytorch/test-infra to source the validation scripts from"
-        default: "main"
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       os:
+#         description: "Operating system to generate for (linux, windows, macos, macos-arm64)"
+#         required: true
+#         type: string
+#       channel:
+#         description: "Channel to use (nightly, test, release, all)"
+#         required: true
+#         type: string
+#       torchonly:
+#         description: 'Validate torchonly'
+#         default: false
+#         required: false
+#         type: boolean
+#       include-test-ops:
+#         description: 'Include Test Ops tests (only Linux)'
+#         default: false
+#         required: false
+#         type: boolean
+#       include-torchaudio:
+#         description: 'Include torchaudio in validation (by default only torch and torchvision are validated)'
+#         default: false
+#         required: false
+#         type: boolean
+#       use-only-dl-pytorch-org:
+#         description: 'Use only download.pytorch.org when generating wheel install command'
+#         default: "false"
+#         required: false
+#         type: string
+#       use-extra-index-url:
+#         description: 'Use extra-index url for pip tests'
+#         default: false
+#         required: false
+#         type: boolean
+#       use-wheel-variants:
+#         description: 'Use wheel-variants for installing pip binaries'
+#         default: false
+#         required: false
+#         type: boolean
+#       test-infra-ref:
+#         description: "Ref of pytorch/test-infra to source the validation scripts from"
+#         default: "main"
+#         required: false
+#         type: string
+# 
+#   workflow_dispatch:
+#     inputs:
+#       os:
+#         description: "Operating system to generate for (linux, windows, macos, macos-arm64)"
+#         required: true
+#         type: choice
+#         default: all
+#         options:
+#           - windows
+#           - linux
+#           - linux-aarch64
+#           - macos
+#           - all
+#       channel:
+#         description: "Channel to use (nightly, test, release, all)"
+#         required: true
+#         type: choice
+#         default: test
+#         options:
+#           - release
+#           - nightly
+#           - test
+#           - all
+#       torchonly:
+#         description: 'Validate torchonly'
+#         default: false
+#         required: false
+#         type: boolean
+#       version:
+#         description: 'Version to validate'
+#         default: ""
+#         required: false
+#         type: string
+#       include-test-ops:
+#         description: 'Include Test Ops tests (only Linux)'
+#         default: false
+#         required: false
+#         type: boolean
+#       include-torchaudio:
+#         description: 'Include torchaudio in validation (by default only torch and torchvision are validated)'
+#         default: false
+#         required: false
+#         type: boolean
+#       use-only-dl-pytorch-org:
+#         description: 'Use only download.pytorch.org when generating wheel install command'
+#         default: "false"
+#         required: false
+#         type: string
+#       use-extra-index-url:
+#         description: 'Use extra-index url for pip tests'
+#         default: false
+#         required: false
+#         type: boolean
+#       use-wheel-variants:
+#         description: 'Use wheel-variants for installing pip binaries'
+#         default: false
+#         required: false
+#         type: boolean
+# 
+#       test-infra-ref:
+#         description: "Ref of pytorch/test-infra to source the validation scripts from"
+#         default: "main"
+#         required: false
+#         type: string
+# 
 jobs:
   generate-release-matrix:
     uses: ./.github/workflows/generate_release_matrix.yml

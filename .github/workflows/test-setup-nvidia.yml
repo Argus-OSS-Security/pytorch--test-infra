@@ -1,13 +1,14 @@
 name: Test setup nvidia
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/test-setup-nvidia.yml
-      - .github/actions/setup-nvidia/action.yml
-      - .github/scripts/test_setup_nvidia.py
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/test-setup-nvidia.yml
+#       - .github/actions/setup-nvidia/action.yml
+#       - .github/scripts/test_setup_nvidia.py
+#   workflow_dispatch:
+# 
 jobs:
   test:
     strategy:

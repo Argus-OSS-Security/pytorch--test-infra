@@ -1,32 +1,33 @@
 name: Trigger nightly builds for domains
 
-on:
-  schedule:
-    # every night at 11:30AM UTC, 7:30AM EST, 4:30AM PST
-    - cron: 30 11 * * *
-  workflow_dispatch:
-    inputs:
-      domain:
-        description: "What domain to trigger"
-        required: false
-        type: choice
-        default: all
-        options:
-          - vision
-          - audio
-          - torchrec
-          - tensorrt
-          - data
-          - fbgemm
-          - mslk
-          - executorch
-          - torchtune
-          - torchcodec
-          - torchvision-extra-decoders
-          - torchtitan
-          - torchcomms
-          - torchforge
-          - all
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # every night at 11:30AM UTC, 7:30AM EST, 4:30AM PST
+#     - cron: 30 11 * * *
+#   workflow_dispatch:
+#     inputs:
+#       domain:
+#         description: "What domain to trigger"
+#         required: false
+#         type: choice
+#         default: all
+#         options:
+#           - vision
+#           - audio
+#           - torchrec
+#           - tensorrt
+#           - data
+#           - fbgemm
+#           - mslk
+#           - executorch
+#           - torchtune
+#           - torchcodec
+#           - torchvision-extra-decoders
+#           - torchtitan
+#           - torchcomms
+#           - torchforge
+#           - all
 jobs:
   trigger:
     name: Trigger nightly ${{ matrix.domain }} build

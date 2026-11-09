@@ -1,19 +1,20 @@
 name: Build the OSDC CUDA images
 
-on:
-  workflow_dispatch: {}
-  schedule:
-    - cron: "0 8 * * 1"
-  push:
-    branches: [main]
-    paths:
-      - "docker/osdc-cuda/**"
-      - ".github/workflows/osdc-cuda-images.yml"
-  pull_request:
-    paths:
-      - "docker/osdc-cuda/**"
-      - ".github/workflows/osdc-cuda-images.yml"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch: {}
+#   schedule:
+#     - cron: "0 8 * * 1"
+#   push:
+#     branches: [main]
+#     paths:
+#       - "docker/osdc-cuda/**"
+#       - ".github/workflows/osdc-cuda-images.yml"
+#   pull_request:
+#     paths:
+#       - "docker/osdc-cuda/**"
+#       - ".github/workflows/osdc-cuda-images.yml"
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}-${{ github.event_name == 'workflow_dispatch' && github.run_id }}
   cancel-in-progress: true

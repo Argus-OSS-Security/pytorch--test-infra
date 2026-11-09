@@ -1,11 +1,12 @@
 name: Claude Code
 
-on:
-  issue_comment:
-    types: [created]
-  issues:
-    types: [opened]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   issue_comment:
+#     types: [created]
+#   issues:
+#     types: [opened]
+# 
 jobs:
   claude-code:
     uses: ./.github/workflows/_claude-code.yml

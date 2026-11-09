@@ -1,20 +1,21 @@
 name: Custom clang-tidy build (linux)
 
-on:
-  pull_request:
-    paths:
-      - 'tools/clang-tidy-checks/**'
-      - '!tools/clang-tidy-checks/README.md'
-      - '.github/workflows/clang-tidy-linux.yml'
-  push:
-    branches:
-      - main
-    paths:
-      - 'tools/clang-tidy-checks/**'
-      - '!tools/clang-tidy-checks/README.md'
-      - '.github/workflows/clang-tidy-linux.yml'
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - 'tools/clang-tidy-checks/**'
+#       - '!tools/clang-tidy-checks/README.md'
+#       - '.github/workflows/clang-tidy-linux.yml'
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'tools/clang-tidy-checks/**'
+#       - '!tools/clang-tidy-checks/README.md'
+#       - '.github/workflows/clang-tidy-linux.yml'
+#   workflow_dispatch:
+# 
 permissions:
   id-token: write
 

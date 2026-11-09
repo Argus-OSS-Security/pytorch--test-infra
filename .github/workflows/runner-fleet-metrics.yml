@@ -8,16 +8,17 @@ name: Runner fleet metrics
 # No ClickHouse credentials live here: the workflow only authenticates to AWS
 # (OIDC) to write the object; the replicator holds the CH creds.
 
-on:
-  schedule:
-    - cron: "*/30 * * * *"
-  workflow_dispatch:
-    inputs:
-      dry_run:
-        description: "Collect and print counts without uploading to S3"
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "*/30 * * * *"
+#   workflow_dispatch:
+#     inputs:
+#       dry_run:
+#         description: "Collect and print counts without uploading to S3"
+#         type: boolean
+#         default: false
+# 
 concurrency:
   group: runner-fleet-metrics
   cancel-in-progress: false

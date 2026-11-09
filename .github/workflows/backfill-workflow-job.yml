@@ -1,8 +1,9 @@
 name: Backfill workflow jobs in DynamoDB and ClickHouse
 
-on:
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+# 
 permissions:
   id-token: write
   contents: read

@@ -1,17 +1,18 @@
 name: Update Inductor Expected Accuracy
 
-on:
-  # Run weekly on Sunday at 3:00 AM UTC
-  schedule:
-    - cron: "0 3 * * 0"
-  # Allow manual triggering with SHA parameter
-  workflow_dispatch:
-    inputs:
-      pytorch_sha:
-        description: 'PyTorch commit SHA to use for updating expected accuracy'
-        required: true
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   # Run weekly on Sunday at 3:00 AM UTC
+#   schedule:
+#     - cron: "0 3 * * 0"
+#   # Allow manual triggering with SHA parameter
+#   workflow_dispatch:
+#     inputs:
+#       pytorch_sha:
+#         description: 'PyTorch commit SHA to use for updating expected accuracy'
+#         required: true
+#         type: string
+# 
 jobs:
   update-expected-accuracy:
     runs-on: ubuntu-latest

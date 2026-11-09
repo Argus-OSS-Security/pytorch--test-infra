@@ -1,13 +1,14 @@
 name: Test setup ssh
-on:
-  pull_request:
-    paths:
-      - .github/workflows/test-setup-ssh.yml
-      - .github/actions/setup-ssh/action.yml
-      - .github/actions/setup-ssh/index.js
-      - setup-ssh/**
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/test-setup-ssh.yml
+#       - .github/actions/setup-ssh/action.yml
+#       - .github/actions/setup-ssh/index.js
+#       - setup-ssh/**
+#   workflow_dispatch:
+# 
 jobs:
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest

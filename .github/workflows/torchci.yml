@@ -1,27 +1,28 @@
 name: torchci
-on:
-  pull_request:
-    paths:
-      - "torchci/**"
-      - "tools/torchci/**"
-      - ".github/workflows/torchci.yml"
-      # Holds the other side of the outline parity contract: greenlightOutline.test.ts reads
-      # this fixture out of the greenlight tree and asserts what the Python renderer produced.
-      # Greenlight's own workflow does not run the TypeScript suite, so without these paths a
-      # regenerated corpus ships green against its own freshly written expectations and the
-      # mirror only goes red on main.
-      - "greenlight/tests/outline_parity_cases.json"
-      - "greenlight/src/greenlight/verdict_outline.py"
-      # The greenlight replay tests read these: they pin the review workflow's stack step and
-      # parse the skill and hooks. Without these paths an edit to them ships green and the
-      # replay tests only go red on main.
-      - ".github/workflows/greenlight-pr-review.yml"
-      - ".claude/skills/greenlight-review/**"
-      - ".claude/hooks/greenlight/**"
-  push:
-    branches:
-      - main
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - "torchci/**"
+#       - "tools/torchci/**"
+#       - ".github/workflows/torchci.yml"
+#       # Holds the other side of the outline parity contract: greenlightOutline.test.ts reads
+#       # this fixture out of the greenlight tree and asserts what the Python renderer produced.
+#       # Greenlight's own workflow does not run the TypeScript suite, so without these paths a
+#       # regenerated corpus ships green against its own freshly written expectations and the
+#       # mirror only goes red on main.
+#       - "greenlight/tests/outline_parity_cases.json"
+#       - "greenlight/src/greenlight/verdict_outline.py"
+#       # The greenlight replay tests read these: they pin the review workflow's stack step and
+#       # parse the skill and hooks. Without these paths an edit to them ships green and the
+#       # replay tests only go red on main.
+#       - ".github/workflows/greenlight-pr-review.yml"
+#       - ".claude/skills/greenlight-review/**"
+#       - ".claude/hooks/greenlight/**"
+#   push:
+#     branches:
+#       - main
+# 
 jobs:
   test:
     runs-on: ubuntu-24.04

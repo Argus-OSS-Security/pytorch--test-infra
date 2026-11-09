@@ -1,12 +1,13 @@
 name: Test setup-miniconda
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/test-setup-miniconda.yml
-      - .github/actions/check-disk-space/*
-      - .github/actions/setup-miniconda/*
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/test-setup-miniconda.yml
+#       - .github/actions/check-disk-space/*
+#       - .github/actions/setup-miniconda/*
+# 
 jobs:
   test:
     strategy:

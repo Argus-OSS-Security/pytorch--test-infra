@@ -1,16 +1,17 @@
 name: Update test times
 
-on:
-  schedule:
-    # Every day at 3:05am UTC approximately 8:05 PM PT (depending on DST)
-    - cron: "5 3 * * *"
-  # Have the ability to trigger this job manually
-  workflow_dispatch:
-  pull_request:
-    paths:
-      - "tools/torchci/update_test_times.py"
-      - ".github/workflows/update-test-times.yml"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Every day at 3:05am UTC approximately 8:05 PM PT (depending on DST)
+#     - cron: "5 3 * * *"
+#   # Have the ability to trigger this job manually
+#   workflow_dispatch:
+#   pull_request:
+#     paths:
+#       - "tools/torchci/update_test_times.py"
+#       - ".github/workflows/update-test-times.yml"
+# 
 permissions:
   contents: write
 

@@ -1,25 +1,26 @@
 name: Build PyPI wheel cache
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/build-pypi-cache.yml
-      - .github/scripts/pypi_cache/**
-  schedule:
-    - cron: "0 6 * * *"
-  workflow_dispatch:
-    inputs:
-      force_rebuild:
-        description: "Force rebuild: 'package==version' to rebuild one, '*' to rebuild all, empty for normal behavior"
-        type: string
-        default: ""
-        required: false
-      manywheel_version:
-        description: "Manylinux platform tag version (e.g. '2_28', '2_34')"
-        type: string
-        default: "2_28"
-        required: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/build-pypi-cache.yml
+#       - .github/scripts/pypi_cache/**
+#   schedule:
+#     - cron: "0 6 * * *"
+#   workflow_dispatch:
+#     inputs:
+#       force_rebuild:
+#         description: "Force rebuild: 'package==version' to rebuild one, '*' to rebuild all, empty for normal behavior"
+#         type: string
+#         default: ""
+#         required: false
+#       manywheel_version:
+#         description: "Manylinux platform tag version (e.g. '2_28', '2_34')"
+#         type: string
+#         default: "2_28"
+#         required: false
+# 
 concurrency:
   group: ${{ github.event_name == 'pull_request' && format('pypi-cache-pr-{0}', github.event.pull_request.number) || 'pypi-cache-build' }}
   cancel-in-progress: false

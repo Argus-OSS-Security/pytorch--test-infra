@@ -1,25 +1,26 @@
 name: Generates release matrix
 
-on:
-  workflow_call:
-    inputs:
-      version:
-        description: "Release matrix for pytorch release version"
-        default: ""
-        type: string
-      test-infra-repository:
-        description: "Test infra repository to use"
-        default: "pytorch/test-infra"
-        type: string
-      test-infra-ref:
-        description: "Test infra reference to use"
-        default: "main"
-        type: string
-    outputs:
-      matrix:
-        description: "Release matrix for PyTorch version"
-        value: ${{ jobs.generate.outputs.matrix }}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       version:
+#         description: "Release matrix for pytorch release version"
+#         default: ""
+#         type: string
+#       test-infra-repository:
+#         description: "Test infra repository to use"
+#         default: "pytorch/test-infra"
+#         type: string
+#       test-infra-ref:
+#         description: "Test infra reference to use"
+#         default: "main"
+#         type: string
+#     outputs:
+#       matrix:
+#         description: "Release matrix for PyTorch version"
+#         value: ${{ jobs.generate.outputs.matrix }}
+# 
 jobs:
   generate:
     outputs:

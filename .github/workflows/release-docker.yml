@@ -3,31 +3,32 @@ name: Release Docker Images to Docker Hub
 # This workflow pulls release CUDA Docker images from GHCR,
 # retags them, and pushes to Docker Hub.
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/release-docker.yml
-  workflow_dispatch:
-    inputs:
-      pytorch_version:
-        description: 'PyTorch version (e.g. 2.11.0)'
-        required: true
-        type: string
-        default: '2.11.0'
-      dry_run:
-        description: 'Dry run (skip push to Docker Hub)'
-        required: false
-        type: boolean
-        default: true
-      channel:
-        description: 'Channel to use for matrix generation'
-        required: false
-        type: choice
-        default: 'release'
-        options:
-          - 'release'
-          - 'test'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/release-docker.yml
+#   workflow_dispatch:
+#     inputs:
+#       pytorch_version:
+#         description: 'PyTorch version (e.g. 2.11.0)'
+#         required: true
+#         type: string
+#         default: '2.11.0'
+#       dry_run:
+#         description: 'Dry run (skip push to Docker Hub)'
+#         required: false
+#         type: boolean
+#         default: true
+#       channel:
+#         description: 'Channel to use for matrix generation'
+#         required: false
+#         type: choice
+#         default: 'release'
+#         options:
+#           - 'release'
+#           - 'test'
+# 
 permissions: read-all
 
 jobs:

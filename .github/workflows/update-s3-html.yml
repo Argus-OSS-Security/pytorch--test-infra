@@ -1,12 +1,13 @@
 name: Update S3 HTML indices for download.pytorch.org
 
-on:
-  schedule:
-    # Update the indices every hour
-    - cron: "0 * * * *"
-  workflow_dispatch:
-
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Update the indices every hour
+#     - cron: "0 * * * *"
+#   workflow_dispatch:
+# 
+# 
 permissions:
   id-token: write
   contents: read

@@ -1,13 +1,14 @@
 name: Lambda Webhook
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    paths:
-      - .github/workflows/lambda-webhook.yml
-      - "terraform-aws-github-runner/modules/webhook/lambdas/webhook/**"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     paths:
+#       - .github/workflows/lambda-webhook.yml
+#       - "terraform-aws-github-runner/modules/webhook/lambdas/webhook/**"
+# 
 jobs:
   build:
     name: "Run tests for webhook lambda"

@@ -1,12 +1,13 @@
 name: Test setup-uv
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/test-setup-uv.yml
-      - .github/actions/setup-uv/action.yml
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/test-setup-uv.yml
+#       - .github/actions/setup-uv/action.yml
+#   workflow_dispatch:
+# 
 jobs:
   test:
     strategy:

@@ -1,18 +1,19 @@
 name: Create Release Tag
 
-on:
-  workflow_dispatch: {}
-  push: # Automatically tag as release eligible changes to autoscaler lambdas once merged to main
-    branches:
-      - main
-    paths:
-      - 'terraform-aws-github-runner/**'
-      - 'aws/lambda/**'
-      - 'greenlight/**'
-  pull_request: # Generate tag when PR modifies this workflow file
-    paths:
-      - '.github/workflows/lambda-release-tag-runners.yml'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch: {}
+#   push: # Automatically tag as release eligible changes to autoscaler lambdas once merged to main
+#     branches:
+#       - main
+#     paths:
+#       - 'terraform-aws-github-runner/**'
+#       - 'aws/lambda/**'
+#       - 'greenlight/**'
+#   pull_request: # Generate tag when PR modifies this workflow file
+#     paths:
+#       - '.github/workflows/lambda-release-tag-runners.yml'
+# 
 jobs:
   tag:
     name: Create Release Tag

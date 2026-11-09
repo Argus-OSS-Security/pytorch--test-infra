@@ -16,19 +16,20 @@ name: GreenLight policy replay
 # sample reviewer runs, each at the harness's estimate; the sample is GREENLIGHT_REPLAY_SAMPLE_FRACTION of
 # the decisions the frame keeps, at most GREENLIGHT_REPLAY_SAMPLE_CAP.
 
-on:
-  push:
-    # Naming branches also keeps tag pushes, which skip path filters, from starting it.
-    branches-ignore: [main]
-    paths:
-      - .claude/skills/greenlight-review/**
-      - .claude/hooks/greenlight/**
-      - .github/workflows/greenlight-pr-review.yml
-      - .github/workflows/greenlight-policy-replay.yml
-      - .github/scripts/greenlight_policy_replay_*.sh
-      - tools/torchci/greenlight_replay/**
-      - tools/torchci/greenlight_decisions/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     # Naming branches also keeps tag pushes, which skip path filters, from starting it.
+#     branches-ignore: [main]
+#     paths:
+#       - .claude/skills/greenlight-review/**
+#       - .claude/hooks/greenlight/**
+#       - .github/workflows/greenlight-pr-review.yml
+#       - .github/workflows/greenlight-policy-replay.yml
+#       - .github/scripts/greenlight_policy_replay_*.sh
+#       - tools/torchci/greenlight_replay/**
+#       - tools/torchci/greenlight_decisions/**
+# 
 permissions: {}
 
 concurrency:

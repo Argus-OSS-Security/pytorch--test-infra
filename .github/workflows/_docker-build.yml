@@ -1,13 +1,14 @@
 name: _Docker Build (reusable)
 
-on:
-  workflow_call:
-    inputs:
-      push:
-        description: Whether to push images to GHCR
-        type: boolean
-        required: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       push:
+#         description: Whether to push images to GHCR
+#         type: boolean
+#         required: true
+# 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}

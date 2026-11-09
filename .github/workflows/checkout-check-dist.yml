@@ -6,19 +6,20 @@
 # We need to make sure the checked-in `index.js` actually matches what we expect it to be.
 name: Check dist
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/actions/checkout/**'
-      - '!.github/actions/checkout/**.md'
-  pull_request:
-    paths:
-      - '.github/actions/checkout/**'
-      - '!.github/actions/checkout/**.md'
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - '.github/actions/checkout/**'
+#       - '!.github/actions/checkout/**.md'
+#   pull_request:
+#     paths:
+#       - '.github/actions/checkout/**'
+#       - '!.github/actions/checkout/**.md'
+#   workflow_dispatch:
+# 
 jobs:
   check-dist:
     runs-on: ubuntu-latest

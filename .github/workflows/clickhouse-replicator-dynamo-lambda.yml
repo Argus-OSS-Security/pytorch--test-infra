@@ -1,13 +1,14 @@
 name: Test and deploy clickhouse-replicator-dynamo lambda
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/clickhouse-replicator-dynamo-lambda.yml
-      - aws/lambda/clickhouse-replicator-dynamo/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - .github/workflows/clickhouse-replicator-dynamo-lambda.yml
+#       - aws/lambda/clickhouse-replicator-dynamo/**
+# 
 defaults:
   run:
     working-directory: aws/lambda/clickhouse-replicator-dynamo

@@ -1,13 +1,14 @@
 name: Test and deploy clickhouse-replicator-s3 lambda
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/clickhouse-replicator-s3-lambda.yml
-      - aws/lambda/clickhouse-replicator-s3/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - .github/workflows/clickhouse-replicator-s3-lambda.yml
+#       - aws/lambda/clickhouse-replicator-s3/**
+# 
 defaults:
   run:
     working-directory: aws/lambda/clickhouse-replicator-s3

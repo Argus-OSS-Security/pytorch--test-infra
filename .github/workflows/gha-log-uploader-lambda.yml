@@ -1,17 +1,18 @@
 name: Test and deploy gha-log-uploader
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - ".github/workflows/gha-log-uploader-lambda.yml"
-      - "aws/lambda/gha-log-uploader/**"
-  pull_request:
-    paths:
-      - ".github/workflows/gha-log-uploader-lambda.yml"
-      - "aws/lambda/gha-log-uploader/**"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - ".github/workflows/gha-log-uploader-lambda.yml"
+#       - "aws/lambda/gha-log-uploader/**"
+#   pull_request:
+#     paths:
+#       - ".github/workflows/gha-log-uploader-lambda.yml"
+#       - "aws/lambda/gha-log-uploader/**"
+# 
 defaults:
   run:
     working-directory: aws/lambda/gha-log-uploader/

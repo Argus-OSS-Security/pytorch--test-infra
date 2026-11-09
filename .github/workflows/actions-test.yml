@@ -1,15 +1,16 @@
 name: Test
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/actions/upload-artifact-s3/**'
-  pull_request:
-    paths:
-      - '.github/actions/upload-artifact-s3/**'
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - '.github/actions/upload-artifact-s3/**'
+#   pull_request:
+#     paths:
+#       - '.github/actions/upload-artifact-s3/**'
+# 
 jobs:
   build:
     name: Build

@@ -1,12 +1,13 @@
 name: Check pre-review deadlines
 
-on:
-  schedule:
-    # Neither reactions nor the one-week deadline emits a webhook.
-    - cron: "7,22,37,52 * * * *"
-  workflow_dispatch:
-
-# This endpoint persists polling backoff. Avoid overlapping scheduled/manual runs.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Neither reactions nor the one-week deadline emits a webhook.
+#     - cron: "7,22,37,52 * * * *"
+#   workflow_dispatch:
+# 
+# # This endpoint persists polling backoff. Avoid overlapping scheduled/manual runs.
 concurrency:
   group: pre-review-sweep
   cancel-in-progress: false

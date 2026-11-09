@@ -1,11 +1,12 @@
 name: Upload tutorials stat
 
-on:
-  schedule:
-  # Run this once per day.
-    - cron: "0 0 * * *"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#   # Run this once per day.
+#     - cron: "0 0 * * *"
+#   workflow_dispatch:
+# 
 jobs:
   get-tutorials-stats:
     if: ${{ github.repository == 'pytorch/test-infra' }}

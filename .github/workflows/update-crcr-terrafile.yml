@@ -8,16 +8,17 @@ name: Update ci-infra crcr Terrafile
 # Not every release needs a bump: only releases that actually changed the CRCR
 # lambda code vs the previous lambda release trigger a PR.
 
-on:
-  release:
-    types: [published]
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: "test-infra release tag to promote to ci-infra crcr/Terrafile"
-        required: true
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   release:
+#     types: [published]
+#   workflow_dispatch:
+#     inputs:
+#       tag:
+#         description: "test-infra release tag to promote to ci-infra crcr/Terrafile"
+#         required: true
+#         type: string
+# 
 permissions:
   contents: read
 

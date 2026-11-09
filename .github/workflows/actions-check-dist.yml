@@ -6,17 +6,18 @@
 # We need to make sure the checked-in `index.js` actually matches what we expect it to be.
 name: Check dist/
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - '.github/actions/upload-artifact-s3/**'
-  pull_request:
-    paths:
-      - '.github/actions/upload-artifact-s3/**'
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - '.github/actions/upload-artifact-s3/**'
+#   pull_request:
+#     paths:
+#       - '.github/actions/upload-artifact-s3/**'
+#   workflow_dispatch:
+# 
 jobs:
   check-dist:
     runs-on: ubuntu-latest

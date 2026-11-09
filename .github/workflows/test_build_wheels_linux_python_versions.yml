@@ -1,15 +1,16 @@
 name: Test Build Linux Wheels on only selected python versions
 
-on:
-  pull_request:
-    paths:
-      - .github/actions/setup-binary-builds/action.yml
-      - .github/workflows/test_build_wheels_linux_python_versions.yml
-      - .github/workflows/build_wheels_linux.yml
-      - .github/workflows/generate_binary_build_matrix.yml
-      - tools/scripts/generate_binary_build_matrix.py
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/actions/setup-binary-builds/action.yml
+#       - .github/workflows/test_build_wheels_linux_python_versions.yml
+#       - .github/workflows/build_wheels_linux.yml
+#       - .github/workflows/generate_binary_build_matrix.yml
+#       - tools/scripts/generate_binary_build_matrix.py
+#   workflow_dispatch:
+# 
 permissions:
   id-token: write
   contents: read

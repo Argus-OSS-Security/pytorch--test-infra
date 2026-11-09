@@ -1,11 +1,12 @@
 name: Test export-matrix-variables
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/test-export-matrix-variables.yml
-      - .github/actions/export-matrix-variables/*
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/test-export-matrix-variables.yml
+#       - .github/actions/export-matrix-variables/*
+# 
 jobs:
   test-linux:
     uses: ./.github/workflows/linux_job_v2.yml

@@ -1,18 +1,19 @@
 name: Tests
 
-on:
-  pull_request:
-    paths:
-      - mypy.ini
-      - '**.py'
-      - '**requirements.txt'
-      - .github/scripts/**
-      - tools/tests/assets/**
-      - .github/workflows/tests.yml
-  push:
-    branches:
-      - main
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - mypy.ini
+#       - '**.py'
+#       - '**requirements.txt'
+#       - .github/scripts/**
+#       - tools/tests/assets/**
+#       - .github/workflows/tests.yml
+#   push:
+#     branches:
+#       - main
+# 
 jobs:
   test-tools:
     name: Test tools

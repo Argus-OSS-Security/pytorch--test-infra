@@ -1,13 +1,14 @@
 name: Test mobile workflow
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/mobile_job.yml
-      - .github/workflows/test_mobile_job.yml
-      - tools/device-farm-runner/**
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/mobile_job.yml
+#       - .github/workflows/test_mobile_job.yml
+#       - tools/device-farm-runner/**
+#   workflow_dispatch:
+# 
 jobs:
   test-ios-job:
     permissions:

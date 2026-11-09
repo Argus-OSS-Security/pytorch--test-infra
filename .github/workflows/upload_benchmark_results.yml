@@ -1,40 +1,41 @@
 name: Upload benchmark results
 
-on:
-  workflow_call:
-    inputs:
-      benchmark-artifact:
-        description: The name of the benchmark artifact to upload
-        required: true
-        type: string
-      benchmark-metadata:
-        description: The benchmark metadata provided by gather-benchmark-metadata GHA
-        required: true
-        type: string
-      runners-info:
-        description: The runners info gathered by gather-runners-info GHA
-        required: true
-        type: string
-      dependencies:
-        description: The list of dependencies (not yet implemented)
-        required: false
-        type: string
-        default: '{}'
-      schema-version:
-        default: 'v3'
-        type: string
-      dry-run:
-        default: true
-        type: boolean
-      if-no-files-found:
-        description: The desired behavior if no benchmark results are found
-        type: string
-        # Available Options:
-        #   error: Fail the action with an error message
-        #   ignore: Do not output any warnings or errors, the action does not fail
-        # Optional. Default is 'ignore'
-        default: ignore
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       benchmark-artifact:
+#         description: The name of the benchmark artifact to upload
+#         required: true
+#         type: string
+#       benchmark-metadata:
+#         description: The benchmark metadata provided by gather-benchmark-metadata GHA
+#         required: true
+#         type: string
+#       runners-info:
+#         description: The runners info gathered by gather-runners-info GHA
+#         required: true
+#         type: string
+#       dependencies:
+#         description: The list of dependencies (not yet implemented)
+#         required: false
+#         type: string
+#         default: '{}'
+#       schema-version:
+#         default: 'v3'
+#         type: string
+#       dry-run:
+#         default: true
+#         type: boolean
+#       if-no-files-found:
+#         description: The desired behavior if no benchmark results are found
+#         type: string
+#         # Available Options:
+#         #   error: Fail the action with an error message
+#         #   ignore: Do not output any warnings or errors, the action does not fail
+#         # Optional. Default is 'ignore'
+#         default: ignore
+# 
 jobs:
   job:
     name: Uploading ${{ inputs.benchmark-artifact }}

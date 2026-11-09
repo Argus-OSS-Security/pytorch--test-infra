@@ -1,14 +1,15 @@
 name: Test build/test linux workflow (v3 / OSDC)
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/linux_job_v3.yml
-      - .github/workflows/test_linux_job_v3.yml
-      - .github/actions/setup-linux/action.yml
-      - .github/scripts/run_with_env_secrets.py
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/linux_job_v3.yml
+#       - .github/workflows/test_linux_job_v3.yml
+#       - .github/actions/setup-linux/action.yml
+#       - .github/scripts/run_with_env_secrets.py
+#   workflow_dispatch:
+# 
 jobs:
   test-cpu:
     uses: ./.github/workflows/linux_job_v3.yml

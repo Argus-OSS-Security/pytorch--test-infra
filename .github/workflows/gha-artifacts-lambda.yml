@@ -1,17 +1,18 @@
 name: Test and deploy gha-artifacts lambda
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/gha-artifacts-lambda.yml
-      - aws/lambda/gha-artifacts/**
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/gha-artifacts-lambda.yml
-      - aws/lambda/gha-artifacts/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/gha-artifacts-lambda.yml
+#       - aws/lambda/gha-artifacts/**
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - .github/workflows/gha-artifacts-lambda.yml
+#       - aws/lambda/gha-artifacts/**
+# 
 defaults:
   run:
     working-directory: aws/lambda/gha-artifacts/

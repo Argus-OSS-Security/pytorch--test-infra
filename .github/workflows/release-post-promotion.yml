@@ -1,20 +1,21 @@
 name: Release post-promotion SHA256 recompute
 
-on:
-  workflow_dispatch:
-    inputs:
-      project:
-        description: "Release project to recompute checksums for"
-        required: true
-        type: choice
-        default: torch
-        options:
-          - torch
-      version:
-        description: "Override torch version (defaults to release_versions.sh PYTORCH_VERSION)"
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       project:
+#         description: "Release project to recompute checksums for"
+#         required: true
+#         type: choice
+#         default: torch
+#         options:
+#           - torch
+#       version:
+#         description: "Override torch version (defaults to release_versions.sh PYTORCH_VERSION)"
+#         required: false
+#         type: string
+# 
 permissions:
   id-token: write
   contents: read

@@ -1,15 +1,16 @@
 name: Test all GHA to gather different benchmark info
 
-on:
-  workflow_call:
-    outputs:
-      benchmark-metadata:
-        value: ${{ jobs.test-gather-benchmark-info.outputs.benchmark-metadata }}
-      runners-info:
-        value: ${{ jobs.test-gather-benchmark-info.outputs.runners-info }}
-      dependencies:
-        value: ${{ jobs.test-gather-benchmark-info.outputs.dependencies }}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     outputs:
+#       benchmark-metadata:
+#         value: ${{ jobs.test-gather-benchmark-info.outputs.benchmark-metadata }}
+#       runners-info:
+#         value: ${{ jobs.test-gather-benchmark-info.outputs.runners-info }}
+#       dependencies:
+#         value: ${{ jobs.test-gather-benchmark-info.outputs.dependencies }}
+# 
 jobs:
   test-gather-benchmark-info:
     runs-on: ubuntu-24.04

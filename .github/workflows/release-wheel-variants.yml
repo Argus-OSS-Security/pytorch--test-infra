@@ -1,50 +1,51 @@
 name: Release Wheel Variants
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/release-wheel-variants.yml
-      - release/pypi/upload_variant_to_staging.sh
-  workflow_dispatch:
-    inputs:
-      pytorch_version:
-        description: 'PyTorch version to promote (e.g., 2.10.0)'
-        required: true
-        type: string
-      pytorch_release:
-        description: 'PyTorch release series for config files (e.g., 2.10)'
-        required: true
-        type: string
-        default: '2.10'
-      package_name:
-        description: 'Package name to promote'
-        required: true
-        type: choice
-        options:
-          - torch
-          - torchvision
-          - all
-        default: 'torch'
-      architectures:
-        description: 'Architectures to promote (comma-separated, e.g., cpu,cu126,cu128)'
-        required: true
-        type: string
-        default: 'cpu'
-      platforms:
-        description: 'Platforms to promote (comma-separated, e.g., manylinux_2_28_x86_64,win_amd64)'
-        required: true
-        type: string
-        default: 'manylinux_2_28_x86_64'
-      dry_run:
-        description: 'Dry run (do not actually upload)'
-        required: true
-        type: boolean
-        default: true
-      variant_repack_ref:
-        description: 'Ref of variant-repack to use'
-        required: false
-        type: string
-        default: 'main'
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/release-wheel-variants.yml
+#       - release/pypi/upload_variant_to_staging.sh
+#   workflow_dispatch:
+#     inputs:
+#       pytorch_version:
+#         description: 'PyTorch version to promote (e.g., 2.10.0)'
+#         required: true
+#         type: string
+#       pytorch_release:
+#         description: 'PyTorch release series for config files (e.g., 2.10)'
+#         required: true
+#         type: string
+#         default: '2.10'
+#       package_name:
+#         description: 'Package name to promote'
+#         required: true
+#         type: choice
+#         options:
+#           - torch
+#           - torchvision
+#           - all
+#         default: 'torch'
+#       architectures:
+#         description: 'Architectures to promote (comma-separated, e.g., cpu,cu126,cu128)'
+#         required: true
+#         type: string
+#         default: 'cpu'
+#       platforms:
+#         description: 'Platforms to promote (comma-separated, e.g., manylinux_2_28_x86_64,win_amd64)'
+#         required: true
+#         type: string
+#         default: 'manylinux_2_28_x86_64'
+#       dry_run:
+#         description: 'Dry run (do not actually upload)'
+#         required: true
+#         type: boolean
+#         default: true
+#       variant_repack_ref:
+#         description: 'Ref of variant-repack to use'
+#         required: false
+#         type: string
+#         default: 'main'
 permissions:
   id-token: write
   contents: read

@@ -1,19 +1,20 @@
 name: Test cross-repo-ci-relay lambda
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/cross-repo-ci-relay-tests.yml
-      - .github/actions/cross-repo-ci-relay-callback/**
-      - aws/lambda/cross_repo_ci_relay/**
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/cross-repo-ci-relay-tests.yml
-      - .github/actions/cross-repo-ci-relay-callback/**
-      - aws/lambda/cross_repo_ci_relay/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/cross-repo-ci-relay-tests.yml
+#       - .github/actions/cross-repo-ci-relay-callback/**
+#       - aws/lambda/cross_repo_ci_relay/**
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - .github/workflows/cross-repo-ci-relay-tests.yml
+#       - .github/actions/cross-repo-ci-relay-callback/**
+#       - aws/lambda/cross_repo_ci_relay/**
+# 
 defaults:
   run:
     working-directory: aws/lambda/cross_repo_ci_relay/

@@ -1,17 +1,18 @@
 name: BC-Linter Tests
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/bc-linter-tests.yml
-      - tools/stronghold/**
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/bc-linter-tests.yml
-      - tools/stronghold/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/bc-linter-tests.yml
+#       - tools/stronghold/**
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - .github/workflows/bc-linter-tests.yml
+#       - tools/stronghold/**
+# 
 defaults:
   run:
     working-directory: tools/stronghold/

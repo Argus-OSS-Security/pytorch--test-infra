@@ -7,26 +7,27 @@ name: Refresh release runner groups
 # The callers here live in other repositories, so their own refresh runs cannot
 # see this file; it is allow-listed from here instead.
 
-on:
-  push:
-    # No paths filter: the entries follow this repository's branches, so cutting
-    # release/X.Y is exactly when the set changes, and a branch creation carries
-    # no diff for a paths filter to match.
-    branches:
-      - main
-      - release/*
-  workflow_dispatch:
-    inputs:
-      apply:
-        description: "Apply changes (otherwise dry-run)"
-        type: boolean
-        default: false
-  pull_request:
-    paths:
-      - .github/workflows/release-runner-groups-refresh.yml
-      - tools/scripts/release_manage_runner_groups.py
-      - tools/tests/test_release_manage_runner_groups.py
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     # No paths filter: the entries follow this repository's branches, so cutting
+#     # release/X.Y is exactly when the set changes, and a branch creation carries
+#     # no diff for a paths filter to match.
+#     branches:
+#       - main
+#       - release/*
+#   workflow_dispatch:
+#     inputs:
+#       apply:
+#         description: "Apply changes (otherwise dry-run)"
+#         type: boolean
+#         default: false
+#   pull_request:
+#     paths:
+#       - .github/workflows/release-runner-groups-refresh.yml
+#       - tools/scripts/release_manage_runner_groups.py
+#       - tools/tests/test_release_manage_runner_groups.py
+# 
 permissions:
   contents: read
 

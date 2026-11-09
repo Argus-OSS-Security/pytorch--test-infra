@@ -1,17 +1,18 @@
 name: Windows AMI Packer config Validation
 # Validates the Packer configuration for the Windows AMI
 
-on:
-  pull_request:
-    paths:
-      - aws/ami/windows/**
-      - .github/workflows/windows-ami-validation.yml
-  push:
-    branches:
-      - main
-  # Have the ability to trigger this job manually through the API
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - aws/ami/windows/**
+#       - .github/workflows/windows-ami-validation.yml
+#   push:
+#     branches:
+#       - main
+#   # Have the ability to trigger this job manually through the API
+#   workflow_dispatch:
+# 
 env:
     PACKER_VERSION: "1.11.0"
 

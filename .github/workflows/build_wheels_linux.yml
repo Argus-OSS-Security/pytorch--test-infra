@@ -1,146 +1,147 @@
 name: Build Linux Wheels
 
-on:
-  workflow_call:
-    inputs:
-      repository:
-        description: 'Repository to checkout, defaults to ""'
-        default: ""
-        type: string
-      ref:
-        description: 'Reference to checkout, defaults to "nightly"'
-        default: "nightly"
-        type: string
-      test-infra-repository:
-        description: "Test infra repository to use"
-        default: "pytorch/test-infra"
-        type: string
-      test-infra-ref:
-        description: "Test infra reference to use"
-        default: "main"
-        type: string
-      build-matrix:
-        description: "Build matrix to utilize"
-        default: ""
-        type: string
-      pre-script:
-        description: "Pre script to run prior to build"
-        default: ""
-        type: string
-      post-script:
-        description: "Post script to run prior to build"
-        default: ""
-        type: string
-      smoke-test-script:
-        description: "Script for Smoke Test for a specific domain"
-        default: ""
-        type: string
-      env-var-script:
-        description: "Script that sets Domain-Specific Environment Variables"
-        default: ""
-        type: string
-      package-name:
-        description: "Name of the actual python package that is imported in the smoke test"
-        default: ""
-        type: string
-      build-target:
-        description: "The target to build and publish (for repos that build multiple packages)"
-        default: ""
-        type: string
-      trigger-event:
-        description: "Trigger Event in caller that determines whether or not to upload"
-        default: ""
-        type: string
-      cache-path:
-        description: "The path(s) on the runner to cache or restore. The path is relative to repository."
-        default: ""
-        type: string
-      cache-key:
-        description: "The key created when saving a cache and the key used to search for a cache."
-        default: ""
-        type: string
-      architecture:
-        description: Architecture to build for x86_64 for default Linux, or aarch64 for Linux aarch64 builds
-        required: false
-        type: string
-        default: x86_64
-      runner:
-        description: "Override runner for builds"
-        default: ""
-        type: string
-      submodules:
-        description: Works as stated in actions/checkout, but the default value is recursive
-        required: false
-        type: string
-        default: recursive
-      setup-miniconda:
-        description: Set to true if setup-miniconda is needed
-        required: false
-        type: boolean
-        default: true
-      build-platform:
-        description: Platform to build wheels, choose from 'python-build-package' or 'setup-py'
-        required: false
-        type: string
-        default: 'setup-py'
-      upload-to-pypi:
-        description: The comma-separated list of CUDA arch to be uploaded to pypi
-        default: ""
-        type: string
-      build-command:
-        description: The build command to use if build-platform is python-build-package
-        required: false
-        default: "python -m build --wheel"
-        type: string
-      wheel-upload-path:
-        description: Custom wheel upload path
-        required: false
-        type: string
-      wheel-nightly-policy:
-        description: Custom wheel upload policy for nightly
-        type: string
-        default: ''
-      also-upload-to-gpu-arch-versions:
-        description: "Comma-separated list of extra gpu_arch_versions to upload the wheel to (e.g. 'xpu' to also upload a cpu wheel to the xpu index)"
-        required: false
-        type: string
-        default: ''
-      run-smoke-test:
-        description: Set to true if smoke test is needed
-        required: false
-        type: boolean
-        default: true
-      pip-install-torch-extra-args:
-        # NOTE: Why does this exist?
-        # Well setuptools / python packaging doesn't actually allow you to specify dependencies
-        # that come from other index URLs when you are building a package for "security" purposes.
-        # Unfortunately for us our nightlies (torch, torchvision, etc.) only exist on download.pytorch.org
-        # which means that if our users depend on things like torchvision then they need to have
-        # an ability to install these dependencies from download.pytorch.org, as part of the build process
-        # which currently the do not have the ability to do through normal means, hence this parameter
-        # Reference: https://discuss.python.org/t/specifying-extra-index-url-in-setup-cfg-option-dependencies/19377
-        description: Extra arguments to pass to the command that install base torch dependency
-        required: false
-        default: ""
-        type: string
-      timeout:
-        description: 'Timeout for the job (in minutes)'
-        default: 120
-        type: number
-    secrets:
-      PYPI_API_TOKEN:
-        description: An optional token to upload to pypi
-        required: false
-      R2_ACCOUNT_ID:
-        description: Cloudflare R2 account ID
-        required: false
-      R2_ACCESS_KEY_ID:
-        description: Cloudflare R2 access key ID
-        required: false
-      R2_SECRET_ACCESS_KEY:
-        description: Cloudflare R2 secret access key
-        required: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       repository:
+#         description: 'Repository to checkout, defaults to ""'
+#         default: ""
+#         type: string
+#       ref:
+#         description: 'Reference to checkout, defaults to "nightly"'
+#         default: "nightly"
+#         type: string
+#       test-infra-repository:
+#         description: "Test infra repository to use"
+#         default: "pytorch/test-infra"
+#         type: string
+#       test-infra-ref:
+#         description: "Test infra reference to use"
+#         default: "main"
+#         type: string
+#       build-matrix:
+#         description: "Build matrix to utilize"
+#         default: ""
+#         type: string
+#       pre-script:
+#         description: "Pre script to run prior to build"
+#         default: ""
+#         type: string
+#       post-script:
+#         description: "Post script to run prior to build"
+#         default: ""
+#         type: string
+#       smoke-test-script:
+#         description: "Script for Smoke Test for a specific domain"
+#         default: ""
+#         type: string
+#       env-var-script:
+#         description: "Script that sets Domain-Specific Environment Variables"
+#         default: ""
+#         type: string
+#       package-name:
+#         description: "Name of the actual python package that is imported in the smoke test"
+#         default: ""
+#         type: string
+#       build-target:
+#         description: "The target to build and publish (for repos that build multiple packages)"
+#         default: ""
+#         type: string
+#       trigger-event:
+#         description: "Trigger Event in caller that determines whether or not to upload"
+#         default: ""
+#         type: string
+#       cache-path:
+#         description: "The path(s) on the runner to cache or restore. The path is relative to repository."
+#         default: ""
+#         type: string
+#       cache-key:
+#         description: "The key created when saving a cache and the key used to search for a cache."
+#         default: ""
+#         type: string
+#       architecture:
+#         description: Architecture to build for x86_64 for default Linux, or aarch64 for Linux aarch64 builds
+#         required: false
+#         type: string
+#         default: x86_64
+#       runner:
+#         description: "Override runner for builds"
+#         default: ""
+#         type: string
+#       submodules:
+#         description: Works as stated in actions/checkout, but the default value is recursive
+#         required: false
+#         type: string
+#         default: recursive
+#       setup-miniconda:
+#         description: Set to true if setup-miniconda is needed
+#         required: false
+#         type: boolean
+#         default: true
+#       build-platform:
+#         description: Platform to build wheels, choose from 'python-build-package' or 'setup-py'
+#         required: false
+#         type: string
+#         default: 'setup-py'
+#       upload-to-pypi:
+#         description: The comma-separated list of CUDA arch to be uploaded to pypi
+#         default: ""
+#         type: string
+#       build-command:
+#         description: The build command to use if build-platform is python-build-package
+#         required: false
+#         default: "python -m build --wheel"
+#         type: string
+#       wheel-upload-path:
+#         description: Custom wheel upload path
+#         required: false
+#         type: string
+#       wheel-nightly-policy:
+#         description: Custom wheel upload policy for nightly
+#         type: string
+#         default: ''
+#       also-upload-to-gpu-arch-versions:
+#         description: "Comma-separated list of extra gpu_arch_versions to upload the wheel to (e.g. 'xpu' to also upload a cpu wheel to the xpu index)"
+#         required: false
+#         type: string
+#         default: ''
+#       run-smoke-test:
+#         description: Set to true if smoke test is needed
+#         required: false
+#         type: boolean
+#         default: true
+#       pip-install-torch-extra-args:
+#         # NOTE: Why does this exist?
+#         # Well setuptools / python packaging doesn't actually allow you to specify dependencies
+#         # that come from other index URLs when you are building a package for "security" purposes.
+#         # Unfortunately for us our nightlies (torch, torchvision, etc.) only exist on download.pytorch.org
+#         # which means that if our users depend on things like torchvision then they need to have
+#         # an ability to install these dependencies from download.pytorch.org, as part of the build process
+#         # which currently the do not have the ability to do through normal means, hence this parameter
+#         # Reference: https://discuss.python.org/t/specifying-extra-index-url-in-setup-cfg-option-dependencies/19377
+#         description: Extra arguments to pass to the command that install base torch dependency
+#         required: false
+#         default: ""
+#         type: string
+#       timeout:
+#         description: 'Timeout for the job (in minutes)'
+#         default: 120
+#         type: number
+#     secrets:
+#       PYPI_API_TOKEN:
+#         description: An optional token to upload to pypi
+#         required: false
+#       R2_ACCOUNT_ID:
+#         description: Cloudflare R2 account ID
+#         required: false
+#       R2_ACCESS_KEY_ID:
+#         description: Cloudflare R2 access key ID
+#         required: false
+#       R2_SECRET_ACCESS_KEY:
+#         description: Cloudflare R2 secret access key
+#         required: false
+# 
 permissions:
   id-token: write
   contents: read

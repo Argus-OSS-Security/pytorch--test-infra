@@ -1,14 +1,15 @@
 name: Test Build Windows Wheels ARM64
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/test_build_wheels_windows_arm64.yml
-      - .github/workflows/build_wheels_windows.yml
-      - .github/workflows/generate_binary_build_matrix.yml
-      - tools/scripts/generate_binary_build_matrix.py
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/test_build_wheels_windows_arm64.yml
+#       - .github/workflows/build_wheels_windows.yml
+#       - .github/workflows/generate_binary_build_matrix.yml
+#       - tools/scripts/generate_binary_build_matrix.py
+#   workflow_dispatch:
+# 
 permissions:
   id-token: write
   contents: read

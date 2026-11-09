@@ -1,11 +1,12 @@
 name: Test Setup Python
 
-on:
-  pull_request:
-    paths:
-      - .github/actions/setup-python/*
-      - .github/workflows/test-setup-python.yml
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/actions/setup-python/*
+#       - .github/workflows/test-setup-python.yml
+# 
 jobs:
   setup-python-job:
     runs-on: macos-m1-stable

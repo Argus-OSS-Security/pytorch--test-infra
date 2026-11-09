@@ -21,28 +21,29 @@ name: Green Light PR Review
 # greenlight stays quiet. Both row-uploading jobs poke Dr. CI (`greenlight drci-poke`) so that
 # render refreshes without waiting for the 15-minute sweep.
 
-on:
-  workflow_dispatch:
-    inputs:
-      pr_number:
-        description: "pytorch/pytorch PR number to review"
-        required: true
-        type: string
-      head_sha:
-        description: "Head commit SHA the verdict is pinned to (land-guard)"
-        required: true
-        type: string
-      eval_hash:
-        description: "Land-guard fingerprint of the evaluated inputs"
-        required: true
-        type: string
-      shadow:
-        description: "Record the verdict without approving the PR or rendering it in Dr. CI"
-        required: false
-        default: false
-        type: boolean
-
-# One in-flight review per PR; a newer dispatch supersedes an older one.
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       pr_number:
+#         description: "pytorch/pytorch PR number to review"
+#         required: true
+#         type: string
+#       head_sha:
+#         description: "Head commit SHA the verdict is pinned to (land-guard)"
+#         required: true
+#         type: string
+#       eval_hash:
+#         description: "Land-guard fingerprint of the evaluated inputs"
+#         required: true
+#         type: string
+#       shadow:
+#         description: "Record the verdict without approving the PR or rendering it in Dr. CI"
+#         required: false
+#         default: false
+#         type: boolean
+# 
+# # One in-flight review per PR; a newer dispatch supersedes an older one.
 concurrency:
   group: greenlight-pr-review-${{ github.event.inputs.pr_number }}
   cancel-in-progress: true

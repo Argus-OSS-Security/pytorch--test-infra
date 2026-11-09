@@ -3,15 +3,16 @@ name: Sync the OSDC HF caches
 # A ci-refresh-hf-cache run only writes its own region's bucket, so copy what
 # each prod cluster is missing from the others.
 
-on:
-  schedule:
-    - cron: "*/10 * * * *"
-  workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/hf-cache-sync.yml
-      - tools/scripts/hf_cache_sync.py
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "*/10 * * * *"
+#   workflow_dispatch:
+#   pull_request:
+#     paths:
+#       - .github/workflows/hf-cache-sync.yml
+#       - tools/scripts/hf_cache_sync.py
+# 
 concurrency:
   # Never cancel a run mid-copy.
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || 'main' }}

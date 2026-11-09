@@ -3,14 +3,15 @@ name: CRCR sync level
 # Keep the CRCR backend levels in pytorch/pytorch's .github/allowlist.yml in
 # line with HUD's verdicts.
 
-on:
-  # Manual only for now. Once a run by hand has checked the secrets and the
-  # endpoint, enable the daily run (the verdicts cover a whole week, so they
-  # move slowly) by uncommenting:
-  # schedule:
-  #   - cron: "0 8 * * *"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   # Manual only for now. Once a run by hand has checked the secrets and the
+#   # endpoint, enable the daily run (the verdicts cover a whole week, so they
+#   # move slowly) by uncommenting:
+#   # schedule:
+#   #   - cron: "0 8 * * *"
+#   workflow_dispatch:
+# 
 concurrency:
   group: crcr-sync-level
   cancel-in-progress: false

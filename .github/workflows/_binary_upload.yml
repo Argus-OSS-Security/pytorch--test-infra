@@ -1,69 +1,70 @@
 name: upload
 
-on:
-  workflow_call:
-    inputs:
-      repository:
-        description: 'Repository to checkout, defaults to ""'
-        default: ''
-        type: string
-      ref:
-        description: 'Reference to checkout, defaults to "nightly"'
-        default: 'nightly'
-        type: string
-      test-infra-repository:
-        description: "Test infra repository to use"
-        default: "pytorch/test-infra"
-        type: string
-      test-infra-ref:
-        description: "Test infra reference to use"
-        default: "main"
-        type: string
-      build-matrix:
-        description: "Build matrix to utilize"
-        default: ''
-        type: string
-      architecture:
-        description: Architecture to build for x86_64 for default Linux, or aarch64 for Linux aarch64 builds
-        required: false
-        type: string
-        default: ''
-      trigger-event:
-        description: "Trigger Event in caller that determines whether or not to upload"
-        type: string
-        default: ''
-      upload-to-pypi:
-        description: The comma-separated list of CUDA arch to be uploaded to pypi
-        default: ''
-        type: string
-      wheel-upload-path:
-        description: Custom wheel upload path
-        required: false
-        type: string
-        default: ''
-      also-upload-to-gpu-arch-versions:
-        description: "Comma-separated list of extra gpu_arch_versions to upload the wheel to (e.g. 'xpu' to also upload a cpu wheel to the xpu index)"
-        required: false
-        type: string
-        default: ''
-      wheel-nightly-policy:
-        description: Custom wheel upload policy for nightly
-        type: string
-        default: ''
-    secrets:
-      PYPI_API_TOKEN:
-        description: An optional token to upload to pypi
-        required: false
-      R2_ACCOUNT_ID:
-        description: Cloudflare R2 account ID
-        required: false
-      R2_ACCESS_KEY_ID:
-        description: Cloudflare R2 access key ID
-        required: false
-      R2_SECRET_ACCESS_KEY:
-        description: Cloudflare R2 secret access key
-        required: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       repository:
+#         description: 'Repository to checkout, defaults to ""'
+#         default: ''
+#         type: string
+#       ref:
+#         description: 'Reference to checkout, defaults to "nightly"'
+#         default: 'nightly'
+#         type: string
+#       test-infra-repository:
+#         description: "Test infra repository to use"
+#         default: "pytorch/test-infra"
+#         type: string
+#       test-infra-ref:
+#         description: "Test infra reference to use"
+#         default: "main"
+#         type: string
+#       build-matrix:
+#         description: "Build matrix to utilize"
+#         default: ''
+#         type: string
+#       architecture:
+#         description: Architecture to build for x86_64 for default Linux, or aarch64 for Linux aarch64 builds
+#         required: false
+#         type: string
+#         default: ''
+#       trigger-event:
+#         description: "Trigger Event in caller that determines whether or not to upload"
+#         type: string
+#         default: ''
+#       upload-to-pypi:
+#         description: The comma-separated list of CUDA arch to be uploaded to pypi
+#         default: ''
+#         type: string
+#       wheel-upload-path:
+#         description: Custom wheel upload path
+#         required: false
+#         type: string
+#         default: ''
+#       also-upload-to-gpu-arch-versions:
+#         description: "Comma-separated list of extra gpu_arch_versions to upload the wheel to (e.g. 'xpu' to also upload a cpu wheel to the xpu index)"
+#         required: false
+#         type: string
+#         default: ''
+#       wheel-nightly-policy:
+#         description: Custom wheel upload policy for nightly
+#         type: string
+#         default: ''
+#     secrets:
+#       PYPI_API_TOKEN:
+#         description: An optional token to upload to pypi
+#         required: false
+#       R2_ACCOUNT_ID:
+#         description: Cloudflare R2 account ID
+#         required: false
+#       R2_ACCESS_KEY_ID:
+#         description: Cloudflare R2 access key ID
+#         required: false
+#       R2_SECRET_ACCESS_KEY:
+#         description: Cloudflare R2 secret access key
+#         required: false
+# 
 jobs:
   upload:
     runs-on: ubuntu-22.04

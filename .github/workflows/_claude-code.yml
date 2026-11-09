@@ -9,46 +9,47 @@ name: Claude Code (Reusable)
 #   3. Install the Claude GitHub App on the repo.
 #   4. Add CLAUDE.md and a caller workflow to the repo.
 
-on:
-  workflow_call:
-    inputs:
-      model:
-        description: 'Bedrock model ID'
-        type: string
-        default: 'global.anthropic.claude-opus-5-5'
-      timeout_minutes:
-        description: 'Job timeout in minutes'
-        type: number
-        default: 60
-      additional_claude_args:
-        description: 'Extra args appended to claude CLI (e.g. --allowedTools, --mcp-config)'
-        type: string
-        default: ''
-      settings:
-        description: 'Claude settings JSON'
-        type: string
-        default: '{"alwaysThinkingEnabled": true}'
-      show_full_output:
-        description: 'PUBLIC: Show complete Claude messages and tool output in the job log'
-        type: boolean
-        default: false
-      upload_execution_log:
-        description: 'PUBLIC: Upload the execution log after Claude exits; hard timeouts may leave no file'
-        type: boolean
-        default: false
-      execution_log_s3_prefix:
-        description: 'Prefix for Claude execution logs in the public S3 bucket'
-        type: string
-        default: 'review-logs/claude-code'
-      setup_script:
-        description: 'Shell commands to run before Claude (e.g. install lintrunner)'
-        type: string
-        default: ''
-      append_system_prompt:
-        description: 'Additional text appended to the system prompt'
-        type: string
-        default: ''
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       model:
+#         description: 'Bedrock model ID'
+#         type: string
+#         default: 'global.anthropic.claude-opus-5-5'
+#       timeout_minutes:
+#         description: 'Job timeout in minutes'
+#         type: number
+#         default: 60
+#       additional_claude_args:
+#         description: 'Extra args appended to claude CLI (e.g. --allowedTools, --mcp-config)'
+#         type: string
+#         default: ''
+#       settings:
+#         description: 'Claude settings JSON'
+#         type: string
+#         default: '{"alwaysThinkingEnabled": true}'
+#       show_full_output:
+#         description: 'PUBLIC: Show complete Claude messages and tool output in the job log'
+#         type: boolean
+#         default: false
+#       upload_execution_log:
+#         description: 'PUBLIC: Upload the execution log after Claude exits; hard timeouts may leave no file'
+#         type: boolean
+#         default: false
+#       execution_log_s3_prefix:
+#         description: 'Prefix for Claude execution logs in the public S3 bucket'
+#         type: string
+#         default: 'review-logs/claude-code'
+#       setup_script:
+#         description: 'Shell commands to run before Claude (e.g. install lintrunner)'
+#         type: string
+#         default: ''
+#       append_system_prompt:
+#         description: 'Additional text appended to the system prompt'
+#         type: string
+#         default: ''
+# 
 jobs:
   claude-code:
     # Minimum security boundary — enforced for all callers:

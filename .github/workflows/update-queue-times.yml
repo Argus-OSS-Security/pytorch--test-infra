@@ -1,11 +1,12 @@
 name: Update queue times dataset
 
-on:
-  schedule:
-    # Run every 15 minutes
-    - cron: "*/15 * * * *"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Run every 15 minutes
+#     - cron: "*/15 * * * *"
+#   workflow_dispatch:
+# 
 defaults:
   run:
     working-directory: torchci

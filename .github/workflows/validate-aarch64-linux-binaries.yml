@@ -1,106 +1,107 @@
 name: Validate Aarch64 linux binaries
 
-on:
-  workflow_call:
-    inputs:
-      channel:
-        description: "Channel to use (nightly, test, release, all)"
-        required: true
-        type: string
-      torchonly:
-        description: 'Validate torchonly'
-        default: false
-        required: false
-        type: boolean
-      version:
-        description: 'Version to validate - optional'
-        default: ""
-        required: false
-        type: string
-      release-matrix:
-        description: 'Release matrix - optional'
-        default: ""
-        required: false
-        type: string
-      include-torchaudio:
-        description: 'Include torchaudio in validation (by default only torch and torchvision are validated)'
-        default: false
-        required: false
-        type: boolean
-      use-only-dl-pytorch-org:
-        description: 'Use only download.pytorch.org when generating wheel install command'
-        default: "false"
-        required: false
-        type: string
-      use-extra-index-url:
-        description: 'Use extra-index url for pip tests'
-        default: false
-        required: false
-        type: boolean
-      use-wheel-variants:
-        description: 'Use wheel-variants for installing pip binaries'
-        default: false
-        required: false
-        type: boolean
-      test-infra-ref:
-        description: "Ref of pytorch/test-infra to source the validation scripts from"
-        default: "main"
-        required: false
-        type: string
-
-  workflow_dispatch:
-    inputs:
-      channel:
-        description: "Channel to use (nightly, test, release, all)"
-        required: true
-        type: choice
-        options:
-          - release
-          - nightly
-          - test
-          - all
-      torchonly:
-        description: 'Validate torchonly'
-        default: false
-        required: false
-        type: boolean
-      version:
-        description: 'Version to validate - optional'
-        default: ""
-        required: false
-        type: string
-      release-matrix:
-        description: 'Release matrix - optional'
-        default: ""
-        required: false
-        type: string
-      include-torchaudio:
-        description: 'Include torchaudio in validation (by default only torch and torchvision are validated)'
-        default: false
-        required: false
-        type: boolean
-      use-only-dl-pytorch-org:
-        description: 'Use only download.pytorch.org when generating wheel install command'
-        default: "false"
-        required: false
-        type: string
-      use-extra-index-url:
-        description: 'Use extra-index url for pip tests'
-        default: false
-        required: false
-        type: boolean
-      use-wheel-variants:
-        description: 'Use wheel-variants for installing pip binaries'
-        default: false
-        required: false
-        type: boolean
-
-      test-infra-ref:
-        description: "Ref of pytorch/test-infra to source the validation scripts from"
-        default: "main"
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       channel:
+#         description: "Channel to use (nightly, test, release, all)"
+#         required: true
+#         type: string
+#       torchonly:
+#         description: 'Validate torchonly'
+#         default: false
+#         required: false
+#         type: boolean
+#       version:
+#         description: 'Version to validate - optional'
+#         default: ""
+#         required: false
+#         type: string
+#       release-matrix:
+#         description: 'Release matrix - optional'
+#         default: ""
+#         required: false
+#         type: string
+#       include-torchaudio:
+#         description: 'Include torchaudio in validation (by default only torch and torchvision are validated)'
+#         default: false
+#         required: false
+#         type: boolean
+#       use-only-dl-pytorch-org:
+#         description: 'Use only download.pytorch.org when generating wheel install command'
+#         default: "false"
+#         required: false
+#         type: string
+#       use-extra-index-url:
+#         description: 'Use extra-index url for pip tests'
+#         default: false
+#         required: false
+#         type: boolean
+#       use-wheel-variants:
+#         description: 'Use wheel-variants for installing pip binaries'
+#         default: false
+#         required: false
+#         type: boolean
+#       test-infra-ref:
+#         description: "Ref of pytorch/test-infra to source the validation scripts from"
+#         default: "main"
+#         required: false
+#         type: string
+# 
+#   workflow_dispatch:
+#     inputs:
+#       channel:
+#         description: "Channel to use (nightly, test, release, all)"
+#         required: true
+#         type: choice
+#         options:
+#           - release
+#           - nightly
+#           - test
+#           - all
+#       torchonly:
+#         description: 'Validate torchonly'
+#         default: false
+#         required: false
+#         type: boolean
+#       version:
+#         description: 'Version to validate - optional'
+#         default: ""
+#         required: false
+#         type: string
+#       release-matrix:
+#         description: 'Release matrix - optional'
+#         default: ""
+#         required: false
+#         type: string
+#       include-torchaudio:
+#         description: 'Include torchaudio in validation (by default only torch and torchvision are validated)'
+#         default: false
+#         required: false
+#         type: boolean
+#       use-only-dl-pytorch-org:
+#         description: 'Use only download.pytorch.org when generating wheel install command'
+#         default: "false"
+#         required: false
+#         type: string
+#       use-extra-index-url:
+#         description: 'Use extra-index url for pip tests'
+#         default: false
+#         required: false
+#         type: boolean
+#       use-wheel-variants:
+#         description: 'Use wheel-variants for installing pip binaries'
+#         default: false
+#         required: false
+#         type: boolean
+# 
+#       test-infra-ref:
+#         description: "Ref of pytorch/test-infra to source the validation scripts from"
+#         default: "main"
+#         required: false
+#         type: string
+# 
 jobs:
   generate-aarch64-linux-matrix:
     uses: pytorch/test-infra/.github/workflows/generate_binary_build_matrix.yml@main

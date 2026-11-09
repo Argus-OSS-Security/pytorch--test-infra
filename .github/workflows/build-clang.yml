@@ -1,12 +1,13 @@
 name: Build Clang and libomp
 
-on:
-  pull_request:
-    paths:
-      - '.github/workflows/build-clang.yml'
-      - 'tools/clang-build/**'
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - '.github/workflows/build-clang.yml'
+#       - 'tools/clang-build/**'
+#   workflow_dispatch:
+# 
 permissions:
   id-token: write
   contents: read

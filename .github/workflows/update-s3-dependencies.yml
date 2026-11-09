@@ -1,52 +1,53 @@
 name: Update S3 HTML dependencies for download.pytorch.org nightly and test
 
-on:
-  workflow_dispatch:
-    inputs:
-      mode:
-        description: 'Operation mode'
-        required: true
-        type: choice
-        default: update-packages
-        options:
-          - update-packages
-          - create-target
-          - refresh-index
-      dryrun:
-        description: 'Enable dry run mode'
-        required: true
-        type: choice
-        default: enabled
-        options:
-          - enabled
-          - disabled
-      package:
-        description: 'Package to update (only for update-packages mode)'
-        required: false
-        type: choice
-        default: torch
-        options:
-          - all
-          - torch
-          - triton
-          - torchtune
-          - torch_xpu
-          - torch_rocm
-          - torch_tensorrt
-          - vllm
-      target:
-        description: 'Target to create or refresh (e.g., rocm7.2, cu130) - only for create-target and refresh-index modes'
-        required: false
-        type: string
-      include-prod:
-        description: 'Update prod (whl) dependencies only, via promote-env (skips nightly/test; update-packages mode only)'
-        required: false
-        type: choice
-        default: disabled
-        options:
-          - disabled
-          - enabled
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       mode:
+#         description: 'Operation mode'
+#         required: true
+#         type: choice
+#         default: update-packages
+#         options:
+#           - update-packages
+#           - create-target
+#           - refresh-index
+#       dryrun:
+#         description: 'Enable dry run mode'
+#         required: true
+#         type: choice
+#         default: enabled
+#         options:
+#           - enabled
+#           - disabled
+#       package:
+#         description: 'Package to update (only for update-packages mode)'
+#         required: false
+#         type: choice
+#         default: torch
+#         options:
+#           - all
+#           - torch
+#           - triton
+#           - torchtune
+#           - torch_xpu
+#           - torch_rocm
+#           - torch_tensorrt
+#           - vllm
+#       target:
+#         description: 'Target to create or refresh (e.g., rocm7.2, cu130) - only for create-target and refresh-index modes'
+#         required: false
+#         type: string
+#       include-prod:
+#         description: 'Update prod (whl) dependencies only, via promote-env (skips nightly/test; update-packages mode only)'
+#         required: false
+#         type: choice
+#         default: disabled
+#         options:
+#           - disabled
+#           - enabled
+# 
 permissions:
   id-token: write
   contents: read

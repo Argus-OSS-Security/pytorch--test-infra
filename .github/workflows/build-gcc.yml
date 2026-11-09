@@ -1,12 +1,13 @@
 name: Build GCC
 
-on:
-  pull_request:
-    paths:
-      - '.github/workflows/build-gcc.yml'
-      - 'tools/gcc-build/**'
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - '.github/workflows/build-gcc.yml'
+#       - 'tools/gcc-build/**'
+#   workflow_dispatch:
+# 
 permissions:
   id-token: write
   contents: read

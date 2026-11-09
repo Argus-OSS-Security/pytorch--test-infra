@@ -1,20 +1,21 @@
 name: Build and Publish Docker Images
 
-on:
-  schedule:
-    - cron: "0 6 * * *"
-  push:
-    branches: [main]
-    paths:
-      - "docker/**"
-  pull_request:
-    paths:
-      - "docker/**"
-      # Validate changes to the build workflows themselves (push: false on PRs)
-      - ".github/workflows/docker-build.yml"
-      - ".github/workflows/_docker-build.yml"
-  workflow_dispatch: {}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: "0 6 * * *"
+#   push:
+#     branches: [main]
+#     paths:
+#       - "docker/**"
+#   pull_request:
+#     paths:
+#       - "docker/**"
+#       # Validate changes to the build workflows themselves (push: false on PRs)
+#       - ".github/workflows/docker-build.yml"
+#       - ".github/workflows/_docker-build.yml"
+#   workflow_dispatch: {}
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}-${{ github.event_name == 'workflow_dispatch' && github.run_id }}-${{ github.event_name == 'schedule' }}
   cancel-in-progress: true

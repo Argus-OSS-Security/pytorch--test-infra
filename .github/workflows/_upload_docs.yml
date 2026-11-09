@@ -1,22 +1,23 @@
 name: Upload docs to github
 # https://www.internalfb.com/intern/wiki/Users/csl/Reusable_action:_upload_docs/ for use
 
-on:
-  workflow_call:
-    inputs:
-      docs-branch:
-        description: The branch to upload the docs to
-        type: string
-        default: 'gh-pages'
-      docs-name:
-        description: The name of the artifact uploaded to github
-        type: string
-        required: true
-      repository:
-        description: Repository of the workflow, used only to make sure that this workflow doesn't run on forks
-        type: string
-        required: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       docs-branch:
+#         description: The branch to upload the docs to
+#         type: string
+#         default: 'gh-pages'
+#       docs-name:
+#         description: The name of the artifact uploaded to github
+#         type: string
+#         required: true
+#       repository:
+#         description: Repository of the workflow, used only to make sure that this workflow doesn't run on forks
+#         type: string
+#         required: true
+# 
 jobs:
   upload_docs:
     name: Upload docs

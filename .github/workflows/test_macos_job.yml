@@ -1,13 +1,14 @@
 name: Test build/test macos workflow
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/macos_job.yml
-      - .github/workflows/test_macos_job.yml
-      - .github/scripts/run_with_env_secrets.py
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/macos_job.yml
+#       - .github/workflows/test_macos_job.yml
+#       - .github/scripts/run_with_env_secrets.py
+#   workflow_dispatch:
+# 
 jobs:
   test-m1:
     uses: ./.github/workflows/macos_job.yml

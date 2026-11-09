@@ -1,81 +1,82 @@
 name: Generates the binary build matrix
 
-on:
-  workflow_call:
-    inputs:
-      package-type:
-        description: "Package type to build from (wheel, conda, libtorch)"
-        default: "wheel"
-        type: string
-      os:
-        description: "Operating system to generate for (linux, windows, macos, macos-arm64)"
-        default: "linux"
-        type: string
-      channel:
-        description: "Channel to use (nightly, test, release, all)"
-        default: ""
-        type: string
-      test-infra-repository:
-        description: "Test infra repository to use"
-        default: "pytorch/test-infra"
-        type: string
-      test-infra-ref:
-        description: "Test infra reference to use"
-        default: "main"
-        type: string
-      with-cuda:
-        description: "Build with Cuda?"
-        default: "enable"
-        type: string
-      with-rocm:
-        description: "Build with Rocm?"
-        default: "enable"
-        type: string
-      with-cpu:
-        description: "Build with CPU?"
-        default: "enable"
-        type: string
-      with-xpu:
-        description: "Build with XPU?"
-        default: "disable"
-        type: string
-      runner-fleet:
-        description: |
-          Which runner fleet each row's validation_runner should name: "ec2"
-          (default) or "osdc". On osdc the Linux rows get ARC labels, release
-          isolated on the refs a wheel is published from and regular otherwise;
-          Windows and macOS rows are unchanged, having no OSDC equivalent.
-        default: "ec2"
-        required: false
-        type: string
-      use-only-dl-pytorch-org:
-        description: "Use only download.pytorch.org when generating wheel install command?"
-        default: "false"
-        required: false
-        type: string
-      build-python-only:
-        description: "Generate binary build matrix for a python only package (i.e. only one python version)"
-        default: "disable"
-        type: string
-      python-versions:
-        description: "A JSON-encoded list of python versions to build. An empty list means building all supported versions"
-        default: "[]"
-        type: string
-      python-abi3:
-        description: "Build a single abi3 wheel instead of one wheel per python version. Free-threaded versions still get one wheel each"
-        default: "disable"
-        type: string
-      getting-started:
-        description: "Release matrix for getting started page"
-        required: false
-        type: boolean
-        default: false
-
-    outputs:
-      matrix:
-        description: "Generated build matrix"
-        value: ${{ jobs.generate.outputs.matrix }}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       package-type:
+#         description: "Package type to build from (wheel, conda, libtorch)"
+#         default: "wheel"
+#         type: string
+#       os:
+#         description: "Operating system to generate for (linux, windows, macos, macos-arm64)"
+#         default: "linux"
+#         type: string
+#       channel:
+#         description: "Channel to use (nightly, test, release, all)"
+#         default: ""
+#         type: string
+#       test-infra-repository:
+#         description: "Test infra repository to use"
+#         default: "pytorch/test-infra"
+#         type: string
+#       test-infra-ref:
+#         description: "Test infra reference to use"
+#         default: "main"
+#         type: string
+#       with-cuda:
+#         description: "Build with Cuda?"
+#         default: "enable"
+#         type: string
+#       with-rocm:
+#         description: "Build with Rocm?"
+#         default: "enable"
+#         type: string
+#       with-cpu:
+#         description: "Build with CPU?"
+#         default: "enable"
+#         type: string
+#       with-xpu:
+#         description: "Build with XPU?"
+#         default: "disable"
+#         type: string
+#       runner-fleet:
+#         description: |
+#           Which runner fleet each row's validation_runner should name: "ec2"
+#           (default) or "osdc". On osdc the Linux rows get ARC labels, release
+#           isolated on the refs a wheel is published from and regular otherwise;
+#           Windows and macOS rows are unchanged, having no OSDC equivalent.
+#         default: "ec2"
+#         required: false
+#         type: string
+#       use-only-dl-pytorch-org:
+#         description: "Use only download.pytorch.org when generating wheel install command?"
+#         default: "false"
+#         required: false
+#         type: string
+#       build-python-only:
+#         description: "Generate binary build matrix for a python only package (i.e. only one python version)"
+#         default: "disable"
+#         type: string
+#       python-versions:
+#         description: "A JSON-encoded list of python versions to build. An empty list means building all supported versions"
+#         default: "[]"
+#         type: string
+#       python-abi3:
+#         description: "Build a single abi3 wheel instead of one wheel per python version. Free-threaded versions still get one wheel each"
+#         default: "disable"
+#         type: string
+#       getting-started:
+#         description: "Release matrix for getting started page"
+#         required: false
+#         type: boolean
+#         default: false
+# 
+#     outputs:
+#       matrix:
+#         description: "Generated build matrix"
+#         value: ${{ jobs.generate.outputs.matrix }}
+# 
 jobs:
   generate:
     outputs:

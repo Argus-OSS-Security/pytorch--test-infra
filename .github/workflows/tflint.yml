@@ -1,13 +1,14 @@
 name: TFLint
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    paths:
-      - ".github/workflows/tflint.yml"
-      - "terraform-aws-github-runner/**"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     paths:
+#       - ".github/workflows/tflint.yml"
+#       - "terraform-aws-github-runner/**"
+# 
 jobs:
   tflint:
     name: TFLint

@@ -1,15 +1,16 @@
 name: Scale Config Validator
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    paths:
-      - .github/workflows/scale_config_validation.yml
-      - .github/scale-config.yml
-      - .github/scripts/validate_scale_config.py
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     paths:
+#       - .github/workflows/scale_config_validation.yml
+#       - .github/scale-config.yml
+#       - .github/scripts/validate_scale_config.py
+# 
 jobs:
   scale-config-validation:
     runs-on: ubuntu-latest

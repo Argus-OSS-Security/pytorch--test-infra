@@ -13,35 +13,36 @@ name: Sync Triton wheels from a triton-lang/triton run to download.pytorch.org t
 # reading the plan printed by the prepare job. The hourly update-s3-html
 # workflow regenerates the whl/test index once the files are uploaded.
 
-on:
-  workflow_dispatch:
-    inputs:
-      source:
-        description: 'Where to take the wheels from'
-        required: true
-        type: choice
-        default: github-run
-        options:
-          - github-run
-          - pypi
-      run_id:
-        description: 'Run ID of the triton-lang/triton Wheels workflow run, e.g. 39878672590 (source=github-run only)'
-        required: false
-        type: string
-      source_repo:
-        description: 'Repository that owns the run'
-        required: false
-        type: string
-        default: triton-lang/triton
-      dryrun:
-        description: 'Enable dry run mode'
-        required: true
-        type: choice
-        default: enabled
-        options:
-          - enabled
-          - disabled
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       source:
+#         description: 'Where to take the wheels from'
+#         required: true
+#         type: choice
+#         default: github-run
+#         options:
+#           - github-run
+#           - pypi
+#       run_id:
+#         description: 'Run ID of the triton-lang/triton Wheels workflow run, e.g. 39878672590 (source=github-run only)'
+#         required: false
+#         type: string
+#       source_repo:
+#         description: 'Repository that owns the run'
+#         required: false
+#         type: string
+#         default: triton-lang/triton
+#       dryrun:
+#         description: 'Enable dry run mode'
+#         required: true
+#         type: choice
+#         default: enabled
+#         options:
+#           - enabled
+#           - disabled
+# 
 permissions:
   id-token: write
   contents: read

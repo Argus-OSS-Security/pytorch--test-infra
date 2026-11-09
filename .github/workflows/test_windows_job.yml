@@ -1,12 +1,13 @@
 name: Test build/test windows workflow
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/windows_job.yml
-      - .github/workflows/test_windows_job.yml
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/windows_job.yml
+#       - .github/workflows/test_windows_job.yml
+#   workflow_dispatch:
+# 
 jobs:
   test-cpu:
     uses: ./.github/workflows/windows_job.yml

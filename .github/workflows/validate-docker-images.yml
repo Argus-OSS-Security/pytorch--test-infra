@@ -1,47 +1,48 @@
 name: Validate Nightly Docker Images
-on:
-  pull_request:
-    paths:
-      - .github/workflows/validate-docker-images.yml
-  workflow_call:
-    inputs:
-      channel:
-        description: 'PyTorch channel to use (nightly, test, release, all)'
-        required: false
-        type: string
-        default: 'nightly'
-      generate_dockerhub_images:
-        description: 'Generate Docker Hub images (strip ghcr.io/ prefix for release)'
-        default: "false"
-        required: false
-        type: string
-      ref:
-        description: 'Reference to checkout, defaults to empty'
-        default: ""
-        required: false
-        type: string
-  workflow_dispatch:
-    inputs:
-      channel:
-        description: 'PyTorch channel to use (nightly, test, release, all)'
-        required: false
-        type: choice
-        default: 'nightly'
-        options:
-          - 'nightly'
-          - 'test'
-          - 'release'
-      generate_dockerhub_images:
-        description: 'Generate Docker Hub images (strip ghcr.io/ prefix for release)'
-        default: "false"
-        required: false
-        type: string
-      ref:
-        description: 'Reference to checkout, defaults to empty'
-        default: ""
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/validate-docker-images.yml
+#   workflow_call:
+#     inputs:
+#       channel:
+#         description: 'PyTorch channel to use (nightly, test, release, all)'
+#         required: false
+#         type: string
+#         default: 'nightly'
+#       generate_dockerhub_images:
+#         description: 'Generate Docker Hub images (strip ghcr.io/ prefix for release)'
+#         default: "false"
+#         required: false
+#         type: string
+#       ref:
+#         description: 'Reference to checkout, defaults to empty'
+#         default: ""
+#         required: false
+#         type: string
+#   workflow_dispatch:
+#     inputs:
+#       channel:
+#         description: 'PyTorch channel to use (nightly, test, release, all)'
+#         required: false
+#         type: choice
+#         default: 'nightly'
+#         options:
+#           - 'nightly'
+#           - 'test'
+#           - 'release'
+#       generate_dockerhub_images:
+#         description: 'Generate Docker Hub images (strip ghcr.io/ prefix for release)'
+#         default: "false"
+#         required: false
+#         type: string
+#       ref:
+#         description: 'Reference to checkout, defaults to empty'
+#         default: ""
+#         required: false
+#         type: string
+# 
 jobs:
   generate-matrix:
     uses: ./.github/workflows/generate_docker_release_matrix.yml

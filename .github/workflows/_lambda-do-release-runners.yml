@@ -1,11 +1,12 @@
-on:
-  workflow_call:
-    inputs:
-      tag:
-        type: string
-        description: tag to create release
-        required: true
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       tag:
+#         type: string
+#         description: tag to create release
+#         required: true
+# 
 name: Upload Release for lambdas
 
 jobs:

@@ -1,17 +1,18 @@
 name: Test Build Linux Aarch64 Wheels
 
-on:
-  pull_request:
-    paths:
-      - .github/actions/setup-binary-builds/action.yml
-      - .github/workflows/test_build_wheels_linux.yml
-      - .github/workflows/build_wheels_linux.yml
-      - .github/workflows/generate_binary_build_matrix.yml
-      - .github/workflows/test_build_wheels_linux_aarch64_without_cuda.yml
-      - tools/scripts/generate_binary_build_matrix.py
-      - tools/pkg-helpers/pytorch_pkg_helpers/version.py
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/actions/setup-binary-builds/action.yml
+#       - .github/workflows/test_build_wheels_linux.yml
+#       - .github/workflows/build_wheels_linux.yml
+#       - .github/workflows/generate_binary_build_matrix.yml
+#       - .github/workflows/test_build_wheels_linux_aarch64_without_cuda.yml
+#       - tools/scripts/generate_binary_build_matrix.py
+#       - tools/pkg-helpers/pytorch_pkg_helpers/version.py
+#   workflow_dispatch:
+# 
 permissions:
   id-token: write
   contents: read

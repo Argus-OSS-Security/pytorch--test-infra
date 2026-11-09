@@ -1,16 +1,17 @@
 name: Update disabled tests
 
-on:
-  schedule:
-    # Every 15 minutes
-    - cron: "*/15 * * * *"
-  # Have the ability to trigger this job manually through the API
-  workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/update_disabled_tests.yml
-      - .github/scripts/update_disabled_issues.py
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Every 15 minutes
+#     - cron: "*/15 * * * *"
+#   # Have the ability to trigger this job manually through the API
+#   workflow_dispatch:
+#   pull_request:
+#     paths:
+#       - .github/workflows/update_disabled_tests.yml
+#       - .github/scripts/update_disabled_issues.py
+# 
 permissions:
   contents: write
 

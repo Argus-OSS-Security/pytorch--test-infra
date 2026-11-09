@@ -1,41 +1,42 @@
 name: Release torch, triton or an ecosystem library from test to production.
 run-name: Release ${{ inputs.package || 'torchvision' }} to production (dryrun=${{ inputs.dryrun || 'enabled' }})
 
-on:
-  workflow_dispatch:
-    inputs:
-      dryrun:
-        required: true
-        type: choice
-        default: enabled
-        options:
-          - enabled
-          - disabled
-      package:
-        description: "Package to prepare and release. torch, libtorch, torchvision and torchaudio skip the targets in RELEASE_PROMOTE_SKIP_TARGETS (release/release_versions.sh); triton releases triton, triton_rocm and triton_xpu together"
-        required: true
-        type: choice
-        default: torchvision
-        options:
-          - torch
-          - libtorch
-          - triton
-          - torchao
-          - torchtune
-          - executorch
-          - torchvision
-          - torchaudio
-          - torchcodec
-          - torchcomms
-          - torch_tensorrt
-          - torch_tensorrt_rtx
-          - torch_tensorrt_executorch_runtime
-          - torchrec
-          - fbgemm_gpu
-          - fbgemm_gpu_genai
-          - mslk
-          - flash_attn_3
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       dryrun:
+#         required: true
+#         type: choice
+#         default: enabled
+#         options:
+#           - enabled
+#           - disabled
+#       package:
+#         description: "Package to prepare and release. torch, libtorch, torchvision and torchaudio skip the targets in RELEASE_PROMOTE_SKIP_TARGETS (release/release_versions.sh); triton releases triton, triton_rocm and triton_xpu together"
+#         required: true
+#         type: choice
+#         default: torchvision
+#         options:
+#           - torch
+#           - libtorch
+#           - triton
+#           - torchao
+#           - torchtune
+#           - executorch
+#           - torchvision
+#           - torchaudio
+#           - torchcodec
+#           - torchcomms
+#           - torch_tensorrt
+#           - torch_tensorrt_rtx
+#           - torch_tensorrt_executorch_runtime
+#           - torchrec
+#           - fbgemm_gpu
+#           - fbgemm_gpu_genai
+#           - mslk
+#           - flash_attn_3
+# 
 permissions:
   id-token: write
   contents: read

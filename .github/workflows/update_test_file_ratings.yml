@@ -1,9 +1,10 @@
 name: Update test file ratings for TD Heuristics
 
-on:
-  schedule:
-    - cron: 5 11 * * *  # At 11:05 UTC every day or about 4am PT
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     - cron: 5 11 * * *  # At 11:05 UTC every day or about 4am PT
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}-${{ github.event_name == 'workflow_dispatch' }}
   cancel-in-progress: true

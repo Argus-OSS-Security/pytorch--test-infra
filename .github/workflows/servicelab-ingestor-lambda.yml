@@ -1,13 +1,14 @@
 name: Test and deploy the lambda to ingest ServiceLab results from S3
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/servicelab-ingestor-lambda.yml
-      - aws/lambda/servicelab-ingestor/**
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - .github/workflows/servicelab-ingestor-lambda.yml
+#       - aws/lambda/servicelab-ingestor/**
+# 
 defaults:
   run:
     working-directory: aws/lambda/servicelab-ingestor

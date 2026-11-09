@@ -1,28 +1,29 @@
 name: Release binary to pypi
 
-on:
-  workflow_dispatch:
-    inputs:
-      dryrun:
-        required: true
-        type: choice
-        default: enabled
-        options:
-          - enabled
-          - disabled
-      package:
-        description: "Domain to prepare and release"
-        required: true
-        type: choice
-        default: torchao
-        options:
-          - torchao
-          - torchtune
-          - executorch
-          - torchvision
-          - torchaudio
-          - torchcodec
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       dryrun:
+#         required: true
+#         type: choice
+#         default: enabled
+#         options:
+#           - enabled
+#           - disabled
+#       package:
+#         description: "Domain to prepare and release"
+#         required: true
+#         type: choice
+#         default: torchao
+#         options:
+#           - torchao
+#           - torchtune
+#           - executorch
+#           - torchvision
+#           - torchaudio
+#           - torchcodec
+# 
 permissions:
   id-token: write
   contents: read

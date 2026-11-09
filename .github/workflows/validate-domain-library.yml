@@ -4,57 +4,58 @@ name: Validate domain libary
 # Optionally restricts validation to the specified OS and channel.
 # For the details about parameter values, see:
 #   pytorch/test-infra/.github/workflows/generate_binary_build_matrix.yml@main
-on:
-  workflow_call:
-    inputs:
-      os:
-        description: "Operating system to generate for (linux, windows, macos, macos-arm64)"
-        required: false
-        type: string
-        default: "all"
-      channel:
-        description: "Channel to use (nightly, test, release, all)"
-        required: true
-        type: string
-      ref:
-        description: 'Reference to checkout, defaults to empty'
-        default: ""
-        required: false
-        type: string
-      package_type:
-        description: "Package type (wheel, libtorch, all)"
-        required: false
-        type: string
-        default: "all"
-      repository:
-        description: "Path to repository to checkout"
-        required: true
-        type: string
-      smoke_test:
-        description: "Path to a smoke test script"
-        required: true
-        type: string
-      with_cuda:
-        description: "With cuda enable/disable"
-        required: false
-        type: string
-        default: disable
-      with_rocm:
-        description: "With rocm enable/disable"
-        required: false
-        type: string
-        default: enable
-      install_torch:
-        description: "Create a new venv and preinstall torch"
-        required: false
-        type: boolean
-        default: false
-      version:
-        description: "Version to validate - optional"
-        default: ""
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       os:
+#         description: "Operating system to generate for (linux, windows, macos, macos-arm64)"
+#         required: false
+#         type: string
+#         default: "all"
+#       channel:
+#         description: "Channel to use (nightly, test, release, all)"
+#         required: true
+#         type: string
+#       ref:
+#         description: 'Reference to checkout, defaults to empty'
+#         default: ""
+#         required: false
+#         type: string
+#       package_type:
+#         description: "Package type (wheel, libtorch, all)"
+#         required: false
+#         type: string
+#         default: "all"
+#       repository:
+#         description: "Path to repository to checkout"
+#         required: true
+#         type: string
+#       smoke_test:
+#         description: "Path to a smoke test script"
+#         required: true
+#         type: string
+#       with_cuda:
+#         description: "With cuda enable/disable"
+#         required: false
+#         type: string
+#         default: disable
+#       with_rocm:
+#         description: "With rocm enable/disable"
+#         required: false
+#         type: string
+#         default: enable
+#       install_torch:
+#         description: "Create a new venv and preinstall torch"
+#         required: false
+#         type: boolean
+#         default: false
+#       version:
+#         description: "Version to validate - optional"
+#         default: ""
+#         required: false
+#         type: string
+# 
 jobs:
   generate-linux-matrix:
     if:  (inputs.os == 'linux' || inputs.os == 'all')

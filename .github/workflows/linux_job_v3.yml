@@ -1,122 +1,123 @@
 name: Build / Test on Linux v3 (OSDC)
 
 # Same inputs as linux_job_v2.yml, but compatible with OSDC (ARC) runners.
-on:
-  workflow_call:
-    inputs:
-      script:
-        description: 'Script to utilize'
-        default: "python setup.py bdist_wheel"
-        type: string
-      timeout:
-        description: 'Timeout for the job (in minutes)'
-        default: 30
-        type: number
-      runner:
-        description: 'ARC runner label to utilize (e.g. mt-l-x86iavx512-8-64)'
-        default: "mt-l-x86iavx512-8-64"
-        type: string
-      upload-artifact:
-        description: |
-          Name to give artifacts uploaded from ${RUNNER_ARTIFACT_DIR}, all the wheel files
-          under dist/ and any files under artifacts-to-be-uploaded/ will be uploaded
-        default: ''
-        type: string
-      upload-artifact-to-s3:
-        description: |
-          Upload the artifact to S3 instead of GitHub. This is used for large artifacts like
-          exported model
-        required: false
-        default: false
-        type: boolean
-      download-artifact:
-        description: 'Name to download artifacts to ${RUNNER_ARTIFACT_DIR}'
-        default: ''
-        type: string
-      repository:
-        description: 'Repository to checkout, defaults to ""'
-        default: ""
-        type: string
-      fetch-depth:
-        description: 'Number of commits to fetch, defaults to 1 similar to actions/checkout'
-        default: 1
-        type: number
-      single-branch:
-        description: 'Whether to fetch only a single branch, defaults to true'
-        default: true
-        type: boolean
-      additional-fetch-refs:
-        description: 'Additional refs to fetch, space separated'
-        default: |
-          refs/heads/main
-        type: string
-      checkout-mode:
-        description: 'Mode of checkout; one of "normal", "blobless", "treeless".'
-        default: "normal"
-        type: string
-      submodules:
-        description:
-          Same as actions/checkout, set to `true` to checkout submodules or `recursive` to
-          recursively checkout everything
-        default: ""
-        type: string
-      ref:
-        description: 'Reference to checkout, defaults to the commit that triggered the workflow (github.sha)'
-        default: ""
-        type: string
-      test-infra-repository:
-        description: "Test infra repository to use"
-        default: "pytorch/test-infra"
-        type: string
-      test-infra-ref:
-        description: "Test infra reference to use"
-        default: "main"
-        type: string
-      use-custom-docker-registry:
-        description: "[Ignored on OSDC] Kept for compatibility with linux_job_v2.yml."
-        default: true
-        type: boolean
-      docker-image:
-        description: |
-          Fully-qualified, already-built Docker image to run the job inside, e.g.
-          ghcr.io/pytorch/test-infra:cpu-x86_64-<hash> or an ECR path. The image is pulled
-          by the runner before any step runs.
-        default: "pytorch/almalinux-builder"
-        type: string
-      gpu-arch-type:
-        description: "GPU arch type to use"
-        default: "cpu"
-        type: string
-      gpu-arch-version:
-        description: "GPU arch version to use"
-        default: ""
-        type: string
-      job-name:
-        description: "Name for the job, which is displayed in the GitHub UI"
-        default: "linux-job"
-        type: string
-      continue-on-error:
-        description: "Prevents a job from failing when a step fails. Set to true to allow a job to pass when exec script step fails."
-        default: false
-        type: boolean
-      hf-cache:
-        description: "Set up the Hugging Face cache: resolve its mode, warm the datasets dir from the mount and, on a refresh run, sync it back to S3. Set to false for jobs that never use Hugging Face."
-        default: true
-        type: boolean
-      binary-matrix:
-        description: "If we are calling this workflow with binary build matrix entry, will initialize matrix entries and env vars"
-        required: false
-        default: ''
-        type: string
-      secrets-env:
-        description: "List of secrets to be exported to environment variables"
-        type: string
-        default: ''
-      upload-test-run-reports:
-        description: 'Upload torchci reports produced in RUNNER_TEST_RUN_REPORTS_DIR.'
-        type: boolean
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       script:
+#         description: 'Script to utilize'
+#         default: "python setup.py bdist_wheel"
+#         type: string
+#       timeout:
+#         description: 'Timeout for the job (in minutes)'
+#         default: 30
+#         type: number
+#       runner:
+#         description: 'ARC runner label to utilize (e.g. mt-l-x86iavx512-8-64)'
+#         default: "mt-l-x86iavx512-8-64"
+#         type: string
+#       upload-artifact:
+#         description: |
+#           Name to give artifacts uploaded from ${RUNNER_ARTIFACT_DIR}, all the wheel files
+#           under dist/ and any files under artifacts-to-be-uploaded/ will be uploaded
+#         default: ''
+#         type: string
+#       upload-artifact-to-s3:
+#         description: |
+#           Upload the artifact to S3 instead of GitHub. This is used for large artifacts like
+#           exported model
+#         required: false
+#         default: false
+#         type: boolean
+#       download-artifact:
+#         description: 'Name to download artifacts to ${RUNNER_ARTIFACT_DIR}'
+#         default: ''
+#         type: string
+#       repository:
+#         description: 'Repository to checkout, defaults to ""'
+#         default: ""
+#         type: string
+#       fetch-depth:
+#         description: 'Number of commits to fetch, defaults to 1 similar to actions/checkout'
+#         default: 1
+#         type: number
+#       single-branch:
+#         description: 'Whether to fetch only a single branch, defaults to true'
+#         default: true
+#         type: boolean
+#       additional-fetch-refs:
+#         description: 'Additional refs to fetch, space separated'
+#         default: |
+#           refs/heads/main
+#         type: string
+#       checkout-mode:
+#         description: 'Mode of checkout; one of "normal", "blobless", "treeless".'
+#         default: "normal"
+#         type: string
+#       submodules:
+#         description:
+#           Same as actions/checkout, set to `true` to checkout submodules or `recursive` to
+#           recursively checkout everything
+#         default: ""
+#         type: string
+#       ref:
+#         description: 'Reference to checkout, defaults to the commit that triggered the workflow (github.sha)'
+#         default: ""
+#         type: string
+#       test-infra-repository:
+#         description: "Test infra repository to use"
+#         default: "pytorch/test-infra"
+#         type: string
+#       test-infra-ref:
+#         description: "Test infra reference to use"
+#         default: "main"
+#         type: string
+#       use-custom-docker-registry:
+#         description: "[Ignored on OSDC] Kept for compatibility with linux_job_v2.yml."
+#         default: true
+#         type: boolean
+#       docker-image:
+#         description: |
+#           Fully-qualified, already-built Docker image to run the job inside, e.g.
+#           ghcr.io/pytorch/test-infra:cpu-x86_64-<hash> or an ECR path. The image is pulled
+#           by the runner before any step runs.
+#         default: "pytorch/almalinux-builder"
+#         type: string
+#       gpu-arch-type:
+#         description: "GPU arch type to use"
+#         default: "cpu"
+#         type: string
+#       gpu-arch-version:
+#         description: "GPU arch version to use"
+#         default: ""
+#         type: string
+#       job-name:
+#         description: "Name for the job, which is displayed in the GitHub UI"
+#         default: "linux-job"
+#         type: string
+#       continue-on-error:
+#         description: "Prevents a job from failing when a step fails. Set to true to allow a job to pass when exec script step fails."
+#         default: false
+#         type: boolean
+#       hf-cache:
+#         description: "Set up the Hugging Face cache: resolve its mode, warm the datasets dir from the mount and, on a refresh run, sync it back to S3. Set to false for jobs that never use Hugging Face."
+#         default: true
+#         type: boolean
+#       binary-matrix:
+#         description: "If we are calling this workflow with binary build matrix entry, will initialize matrix entries and env vars"
+#         required: false
+#         default: ''
+#         type: string
+#       secrets-env:
+#         description: "List of secrets to be exported to environment variables"
+#         type: string
+#         default: ''
+#       upload-test-run-reports:
+#         description: 'Upload torchci reports produced in RUNNER_TEST_RUN_REPORTS_DIR.'
+#         type: boolean
+#         default: false
+# 
 jobs:
   job:
     strategy:

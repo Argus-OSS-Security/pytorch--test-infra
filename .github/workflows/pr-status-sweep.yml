@@ -1,11 +1,12 @@
 name: Recover PR status comments
 
-on:
-  schedule:
-    # Offset from the independent pre-review deadline sweep.
-    - cron: "11,26,41,56 * * * *"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Offset from the independent pre-review deadline sweep.
+#     - cron: "11,26,41,56 * * * *"
+#   workflow_dispatch:
+# 
 concurrency:
   group: pr-status-sweep
   cancel-in-progress: false

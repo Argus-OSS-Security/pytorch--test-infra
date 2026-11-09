@@ -1,96 +1,97 @@
 name: Run a macOS job
 
-on:
-  workflow_call:
-    inputs:
-      script:
-        description: 'Script to utilize'
-        default: "python setup.py bdist_wheel"
-        type: string
-      timeout:
-        description: 'Timeout for the job (in minutes)'
-        default: 60
-        type: number
-      runner:
-        description: 'Runner type to utilize'
-        default: "macos-12"
-        type: string
-      upload-artifact:
-        description: |
-          Name to give artifacts uploaded from ${RUNNER_ARTIFACT_DIR}, all the wheel files
-          under dist/ and any files under artifacts-to-be-uploaded/ will be uploaded
-        default: ""
-        type: string
-      upload-artifact-to-s3:
-        description: |
-          Upload the artifact to S3 instead of GitHub. This is used for large artifacts like
-          exported model
-        required: false
-        default: false
-        type: boolean
-      download-artifact:
-        description: 'Name to download artifacts to ${RUNNER_ARTIFACT_DIR}'
-        default: ""
-        type: string
-      repository:
-        description: 'Repository to checkout, defaults to ""'
-        default: ""
-        type: string
-      fetch-depth:
-        description: 'Number of commits to fetch, defaults to 1 similar to actions/checkout'
-        default: 1
-        type: number
-      submodules:
-        description:
-          Same as actions/checkout, set to `true` to checkout submodules or `recursive` to
-          recursively checkout everything
-        default: ""
-        type: string
-      ref:
-        description: 'Reference to checkout, defaults to the commit that triggered the workflow (github.sha)'
-        default: ""
-        type: string
-      test-infra-repository:
-        description: "Test infra repository to use"
-        default: "pytorch/test-infra"
-        type: string
-      test-infra-ref:
-        description: "Test infra reference to use"
-        default: "main"
-        type: string
-      job-name:
-        description: "Name for the job, which is displayed in the GitHub UI"
-        default: "macos-job"
-        type: string
-      continue-on-error:
-        description: "Prevents a job from failing when a step fails. Set to true to allow a job to pass when exec script step fails."
-        default: false
-        type: boolean
-      binary-matrix:
-        description: "If we are calling this workflow with binary build matrix entry, will initialize matrix entries and env vars"
-        required: false
-        default: ''
-        type: string
-      secrets-env:
-        description: "List of secrets to be exported to environment variables"
-        type: string
-        default: ''
-      python-version:
-        description: Set the python version used in the job
-        required: false
-        type: string
-        default: "3.9"
-      default-packages:
-        description: |
-          Default packages to pre-install in the conda env. Forwarded to
-          setup-miniconda. Set to "" to skip pre-installing the default
-          packages entirely (useful when the caller installs its own conda
-          env from a single channel and wants to avoid mixed-channel
-          solver conflicts with the defaults-channel pre-population).
-        required: false
-        type: string
-        default: "cmake=3.22 ninja=1.10 pkg-config=0.29 wheel=0.37"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       script:
+#         description: 'Script to utilize'
+#         default: "python setup.py bdist_wheel"
+#         type: string
+#       timeout:
+#         description: 'Timeout for the job (in minutes)'
+#         default: 60
+#         type: number
+#       runner:
+#         description: 'Runner type to utilize'
+#         default: "macos-12"
+#         type: string
+#       upload-artifact:
+#         description: |
+#           Name to give artifacts uploaded from ${RUNNER_ARTIFACT_DIR}, all the wheel files
+#           under dist/ and any files under artifacts-to-be-uploaded/ will be uploaded
+#         default: ""
+#         type: string
+#       upload-artifact-to-s3:
+#         description: |
+#           Upload the artifact to S3 instead of GitHub. This is used for large artifacts like
+#           exported model
+#         required: false
+#         default: false
+#         type: boolean
+#       download-artifact:
+#         description: 'Name to download artifacts to ${RUNNER_ARTIFACT_DIR}'
+#         default: ""
+#         type: string
+#       repository:
+#         description: 'Repository to checkout, defaults to ""'
+#         default: ""
+#         type: string
+#       fetch-depth:
+#         description: 'Number of commits to fetch, defaults to 1 similar to actions/checkout'
+#         default: 1
+#         type: number
+#       submodules:
+#         description:
+#           Same as actions/checkout, set to `true` to checkout submodules or `recursive` to
+#           recursively checkout everything
+#         default: ""
+#         type: string
+#       ref:
+#         description: 'Reference to checkout, defaults to the commit that triggered the workflow (github.sha)'
+#         default: ""
+#         type: string
+#       test-infra-repository:
+#         description: "Test infra repository to use"
+#         default: "pytorch/test-infra"
+#         type: string
+#       test-infra-ref:
+#         description: "Test infra reference to use"
+#         default: "main"
+#         type: string
+#       job-name:
+#         description: "Name for the job, which is displayed in the GitHub UI"
+#         default: "macos-job"
+#         type: string
+#       continue-on-error:
+#         description: "Prevents a job from failing when a step fails. Set to true to allow a job to pass when exec script step fails."
+#         default: false
+#         type: boolean
+#       binary-matrix:
+#         description: "If we are calling this workflow with binary build matrix entry, will initialize matrix entries and env vars"
+#         required: false
+#         default: ''
+#         type: string
+#       secrets-env:
+#         description: "List of secrets to be exported to environment variables"
+#         type: string
+#         default: ''
+#       python-version:
+#         description: Set the python version used in the job
+#         required: false
+#         type: string
+#         default: "3.9"
+#       default-packages:
+#         description: |
+#           Default packages to pre-install in the conda env. Forwarded to
+#           setup-miniconda. Set to "" to skip pre-installing the default
+#           packages entirely (useful when the caller installs its own conda
+#           env from a single channel and wants to avoid mixed-channel
+#           solver conflicts with the defaults-channel pre-population).
+#         required: false
+#         type: string
+#         default: "cmake=3.22 ninja=1.10 pkg-config=0.29 wheel=0.37"
+# 
 jobs:
   job:
     name: ${{ inputs.job-name }}

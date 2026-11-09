@@ -1,35 +1,36 @@
 name: GitHub Analytics Daily
 
-on:
-  pull_request:
-    paths:
-      - .github/workflows/github-analytics-daily.yml
-      - tools/analytics/github_analyze.py
-  workflow_call:
-    inputs:
-      branch:
-        description: "PyTorch release branch. e.g. release/2.7"
-        default: "release/2.10"
-        required: false
-        type: string
-      milestone-id:
-        description: 'Release milestone ID. e.g. 54'
-        default: 57
-        required: false
-        type: string
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: "PyTorch release branch. e.g. release/2.7"
-        default: "release/2.10"
-        required: false
-        type: string
-      milestone-id:
-        description: 'Release milestone ID. e.g. 54'
-        default: 57
-        required: false
-        type: string
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       - .github/workflows/github-analytics-daily.yml
+#       - tools/analytics/github_analyze.py
+#   workflow_call:
+#     inputs:
+#       branch:
+#         description: "PyTorch release branch. e.g. release/2.7"
+#         default: "release/2.10"
+#         required: false
+#         type: string
+#       milestone-id:
+#         description: 'Release milestone ID. e.g. 54'
+#         default: 57
+#         required: false
+#         type: string
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: "PyTorch release branch. e.g. release/2.7"
+#         default: "release/2.10"
+#         required: false
+#         type: string
+#       milestone-id:
+#         description: 'Release milestone ID. e.g. 54'
+#         default: 57
+#         required: false
+#         type: string
+# 
 jobs:
   github-analyze:
     runs-on: ubuntu-latest

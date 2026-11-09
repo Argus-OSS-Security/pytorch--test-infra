@@ -1,11 +1,12 @@
 name: Cancel long-queued jobs
 
-on:
-  schedule:
-    # Every 4 hours
-    - cron: "17 */4 * * *"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Every 4 hours
+#     - cron: "17 */4 * * *"
+#   workflow_dispatch:
+# 
 permissions:
   id-token: write
   contents: read

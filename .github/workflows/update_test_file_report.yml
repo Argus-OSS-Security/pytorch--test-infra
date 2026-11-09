@@ -1,13 +1,14 @@
 name: Test File Report Generator
 
-on:
-  schedule:
-    # Run every day at 2am UTC
-    - cron: '0 2 * * *'
-    # Run every tuesday at 3am UTC
-    - cron: '0 3 * * 2'
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # Run every day at 2am UTC
+#     - cron: '0 2 * * *'
+#     # Run every tuesday at 3am UTC
+#     - cron: '0 3 * * 2'
+#   workflow_dispatch:
+# 
 jobs:
   file-report:
     if: >

@@ -1,17 +1,18 @@
 name: Build Windows AMI
 
-on:
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: 'pytorch/test-infra branch to build from. (default: main)'
-        required: true
-        default: 'main'
-      skip_create_ami:
-        description: 'Skip creating the AMI (default: false)'
-        required: true
-        default: false
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       branch:
+#         description: 'pytorch/test-infra branch to build from. (default: main)'
+#         required: true
+#         default: 'main'
+#       skip_create_ami:
+#         description: 'Skip creating the AMI (default: false)'
+#         required: true
+#         default: false
+# 
 permissions:
   id-token: write
   contents: read

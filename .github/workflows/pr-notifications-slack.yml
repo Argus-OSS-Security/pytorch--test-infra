@@ -1,21 +1,22 @@
 name: Send PyTorch Slack PR review digests
 
-on:
-  schedule:
-    # 9AM ET during daylight saving time, 8AM in winter. The manifest is written
-    # at 11:00 UTC by pr-notifications-manifest.yml.
-    - cron: "0 13 * * *"
-  workflow_dispatch:
-    inputs:
-      live:
-        description: "Send the DMs instead of printing them"
-        type: boolean
-        default: false
-  pull_request:
-    paths:
-      - .github/scripts/pr_notifications_slack.py
-      - .github/workflows/pr-notifications-slack.yml
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # 9AM ET during daylight saving time, 8AM in winter. The manifest is written
+#     # at 11:00 UTC by pr-notifications-manifest.yml.
+#     - cron: "0 13 * * *"
+#   workflow_dispatch:
+#     inputs:
+#       live:
+#         description: "Send the DMs instead of printing them"
+#         type: boolean
+#         default: false
+#   pull_request:
+#     paths:
+#       - .github/scripts/pr_notifications_slack.py
+#       - .github/workflows/pr-notifications-slack.yml
+# 
 jobs:
   # Prints the digests of every registered member, without the Slack token
   dry-run-pytorch-slack-digests:

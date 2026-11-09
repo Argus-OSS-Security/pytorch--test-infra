@@ -1,11 +1,12 @@
 name: revert printer
 
-on:
-  workflow_dispatch:
-  schedule:
-    # At 15:10 (8:10 AM PST) on Monday
-    - cron: 10 15 * * 1
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_dispatch:
+#   schedule:
+#     # At 15:10 (8:10 AM PST) on Monday
+#     - cron: 10 15 * * 1
+# 
 jobs:
   revert_printer:
     runs-on: ubuntu-24.04

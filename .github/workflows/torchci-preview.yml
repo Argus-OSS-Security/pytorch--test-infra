@@ -16,10 +16,11 @@ name: torchci preview
 # .vercel/output -- neither belongs on a GitHub runner. Uploading source keeps
 # both the variables and the build inside Vercel.
 
-on:
-  pull_request_target:
-    types: [labeled, synchronize]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request_target:
+#     types: [labeled, synchronize]
+# 
 permissions:
   contents: read
 

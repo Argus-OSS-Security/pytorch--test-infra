@@ -1,13 +1,14 @@
 name: Lambda Runner Binaries Syncer
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    paths:
-      - .github/workflows/lambda-runner-binaries-syncer.yml
-      - "terraform-aws-github-runner/modules/runner-binaries-syncer/lambdas/runner-binaries-syncer/**"
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     paths:
+#       - .github/workflows/lambda-runner-binaries-syncer.yml
+#       - "terraform-aws-github-runner/modules/runner-binaries-syncer/lambdas/runner-binaries-syncer/**"
+# 
 jobs:
   build:
     name: "Run tests for runner binaries syncer lambda"

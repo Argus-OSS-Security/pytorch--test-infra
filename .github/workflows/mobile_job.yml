@@ -1,108 +1,109 @@
 name: Run mobile tests on devices
 
-on:
-  workflow_call:
-    inputs:
-      job-name:
-        description: Name for the job, which is displayed in the GitHub UI
-        default: mobile-job
-        type: string
-      device-type:
-        description: The type of device (iOS or Android) to test against
-        type: string
-      runner:
-        description: The runner to run the test on
-        type: string
-      timeout:
-        description: Timeout for the job (in minutes)
-        required: false
-        default: 60
-        type: number
-      python-version:
-        description: Set the python version used in the job
-        required: false
-        type: string
-        default: '3.11'
-
-      # AWS Device Farm, this can be copied from AWS console and it's default to
-      # PyTorch project
-      project-arn:
-        description: The AWS Device Farm project where the test runs
-        default: 'arn:aws:devicefarm:us-west-2:308535385114:project:b531574a-fb82-40ae-b687-8f0b81341ae0'
-        type: string
-      device-pool-arn:
-        description: The device pool associated with the project
-        default: 'arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-b33d66efa1f5'
-        type: string
-      new-output-format-flag:
-        description: experiment flag to enable the new artifact json format
-        required: false
-        default: false
-        type: boolean
-
-      # Pulling test-infra itself for device farm runner script
-      test-infra-repository:
-        description: Test infra repository to use
-        default: 'pytorch/test-infra'
-        type: string
-      test-infra-ref:
-        description: Test infra reference to use
-        default: "main"
-        type: string
-
-      # iOS-specific inputs
-      ios-ipa-archive:
-        description: |
-          Either a link to the iOS app IPA archive to run the tests or an existing ARN
-        required: false
-        type: string
-        default: ''
-      ios-xctestrun-zip:
-        description: |
-          Either a link to the iOS xctestrun zip archive or an existing ARN
-        required: false
-        type: string
-        default: ''
-
-      # Android-specific inputs
-      android-app-archive:
-        description: |
-          Either a link to the Android app APK archive to run or an existing ARN
-        required: false
-        type: string
-        default: ''
-      android-test-archive:
-        description: |
-          Either a link to the Android instrumentation tests APK archive to run or
-          an existing ARN
-        required: false
-        type: string
-        default: ''
-
-      # Some share test inputs
-      test-spec:
-        description: |
-          Specify how the test should be run on device. This could either be a link to
-          download the spec or an existing ARN if the spec has previously been uploaded
-          to AWS
-        required: false
-        type: string
-        default: ''
-      # The extra data archive could be large, so it's better to keep them on S3
-      extra-data:
-        description: |
-          Either a link to a zip archive on S3 to be uploaded to the test device or
-          an existing ARN, for example, exported models
-        required: false
-        type: string
-        default: ''
-
-    outputs:
-      artifacts:
-        description: |
-          The list of artifacts from AWS in JSON format returned to the caller
-        value: ${{ jobs.mobile.outputs.artifacts }}
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   workflow_call:
+#     inputs:
+#       job-name:
+#         description: Name for the job, which is displayed in the GitHub UI
+#         default: mobile-job
+#         type: string
+#       device-type:
+#         description: The type of device (iOS or Android) to test against
+#         type: string
+#       runner:
+#         description: The runner to run the test on
+#         type: string
+#       timeout:
+#         description: Timeout for the job (in minutes)
+#         required: false
+#         default: 60
+#         type: number
+#       python-version:
+#         description: Set the python version used in the job
+#         required: false
+#         type: string
+#         default: '3.11'
+# 
+#       # AWS Device Farm, this can be copied from AWS console and it's default to
+#       # PyTorch project
+#       project-arn:
+#         description: The AWS Device Farm project where the test runs
+#         default: 'arn:aws:devicefarm:us-west-2:308535385114:project:b531574a-fb82-40ae-b687-8f0b81341ae0'
+#         type: string
+#       device-pool-arn:
+#         description: The device pool associated with the project
+#         default: 'arn:aws:devicefarm:us-west-2::devicepool:082d10e5-d7d7-48a5-ba5c-b33d66efa1f5'
+#         type: string
+#       new-output-format-flag:
+#         description: experiment flag to enable the new artifact json format
+#         required: false
+#         default: false
+#         type: boolean
+# 
+#       # Pulling test-infra itself for device farm runner script
+#       test-infra-repository:
+#         description: Test infra repository to use
+#         default: 'pytorch/test-infra'
+#         type: string
+#       test-infra-ref:
+#         description: Test infra reference to use
+#         default: "main"
+#         type: string
+# 
+#       # iOS-specific inputs
+#       ios-ipa-archive:
+#         description: |
+#           Either a link to the iOS app IPA archive to run the tests or an existing ARN
+#         required: false
+#         type: string
+#         default: ''
+#       ios-xctestrun-zip:
+#         description: |
+#           Either a link to the iOS xctestrun zip archive or an existing ARN
+#         required: false
+#         type: string
+#         default: ''
+# 
+#       # Android-specific inputs
+#       android-app-archive:
+#         description: |
+#           Either a link to the Android app APK archive to run or an existing ARN
+#         required: false
+#         type: string
+#         default: ''
+#       android-test-archive:
+#         description: |
+#           Either a link to the Android instrumentation tests APK archive to run or
+#           an existing ARN
+#         required: false
+#         type: string
+#         default: ''
+# 
+#       # Some share test inputs
+#       test-spec:
+#         description: |
+#           Specify how the test should be run on device. This could either be a link to
+#           download the spec or an existing ARN if the spec has previously been uploaded
+#           to AWS
+#         required: false
+#         type: string
+#         default: ''
+#       # The extra data archive could be large, so it's better to keep them on S3
+#       extra-data:
+#         description: |
+#           Either a link to a zip archive on S3 to be uploaded to the test device or
+#           an existing ARN, for example, exported models
+#         required: false
+#         type: string
+#         default: ''
+# 
+#     outputs:
+#       artifacts:
+#         description: |
+#           The list of artifacts from AWS in JSON format returned to the caller
+#         value: ${{ jobs.mobile.outputs.artifacts }}
+# 
 jobs:
   mobile:
     name: ${{ inputs.job-name }} (${{ inputs.device-type }})

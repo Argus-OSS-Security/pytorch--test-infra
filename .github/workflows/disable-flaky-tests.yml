@@ -1,12 +1,13 @@
 name: Disable Flaky Tests
 
-on:
-  schedule:
-    # At minute 39 past every 6th hour Monday through Friday.
-    - cron: "39 */6 * * 1-5"
-  # Have the ability to trigger this job manually through the API
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   schedule:
+#     # At minute 39 past every 6th hour Monday through Friday.
+#     - cron: "39 */6 * * 1-5"
+#   # Have the ability to trigger this job manually through the API
+#   workflow_dispatch:
+# 
 jobs:
   cron:
     runs-on: ubuntu-22.04

@@ -1,21 +1,22 @@
 name: Test upload-benchmark-results
 
-on:
-  pull_request:
-    paths:
-      # GHA route
-      - .github/scripts/benchmarks/*
-      - .github/scripts/upload_benchmark_results.py
-      - .github/actions/upload-benchmark-results/*
-      # Reusable workflow route
-      - .github/actions/gather-benchmark-metadata/*
-      - .github/actions/gather-runners-info/*
-      - .github/actions/gather-dependencies/*
-      - .github/workflows/upload_benchmark_results.yml
-      # The test workflow itself
-      - .github/workflows/test_upload_benchmark_results.yml
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     paths:
+#       # GHA route
+#       - .github/scripts/benchmarks/*
+#       - .github/scripts/upload_benchmark_results.py
+#       - .github/actions/upload-benchmark-results/*
+#       # Reusable workflow route
+#       - .github/actions/gather-benchmark-metadata/*
+#       - .github/actions/gather-runners-info/*
+#       - .github/actions/gather-dependencies/*
+#       - .github/workflows/upload_benchmark_results.yml
+#       # The test workflow itself
+#       - .github/workflows/test_upload_benchmark_results.yml
+#   workflow_dispatch:
+# 
 permissions:
   id-token: write
   contents: read
